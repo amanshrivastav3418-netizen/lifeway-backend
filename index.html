@@ -1,0 +1,3349 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lifeway Computer Education </title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // ये फंक्शन बटन दबाते ही भाषा बदलेगा
+    function doGTranslate(lang_pair) {
+        var lang = lang_pair.split('|')[1];
+        var teCombo = document.querySelector('.goog-te-combo');
+
+        if (teCombo == null || teCombo.innerHTML.length == 0) {
+            // अगर अभी लोड नहीं हुआ, तो इंतज़ार करो
+            setTimeout(function() { doGTranslate(lang_pair); }, 500);
+        } else {
+            teCombo.value = lang;
+            // मैन्युअली 'change' इवेंट फायर करना पड़ता है
+            if (typeof (Event) === 'function') {
+                var event = new Event('change', { 'bubbles': true });
+                teCombo.dispatchEvent(event);
+            } else {
+                var event = document.createEvent('HTMLEvents');
+                event.initEvent('change', true, true);
+                teCombo.dispatchEvent(event);
+            }
+        }
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<body>
+
+    <header>
+        <div class="top-header">
+            <span><i class="fas fa-certificate"></i> <b>    ISO 9001:2015 Certified</b>     </span>
+            
+            <span>Helpline: +91-9990788083</span>
+        </div>
+        <div class="logo-area" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <a href="index.html">
+        <img src="https://i.ibb.co/bMhjC3Wd/Logo-Lifeway.png" alt="Logo-Lifeway" style="height: 60px; width: auto;">
+    </a>
+    
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+        <a href="https://www.indiapost.gov.in/home" target="_blank" class="btn-track-post" style="display: flex; align-items: center; gap: 8px; background:white; color: #d0021b; border: 1px solid #d0021b; padding: 8px 12px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: 600;">
+            <img src="https://www.indiapost.gov.in/_layouts/15/images/DOP.Portal.Tracking/indiapost-logo.png" style="height: 18px;">
+            <span>Track Status</span>
+        </a>
+
+        <div class="lang-box-custom">
+            <a href="javascript:void(0)" onclick="doGTranslate('en|en')" class="gflag"><img src="https://flagcdn.com/w20/us.png" alt="EN"> EN</a>
+            <a href="javascript:void(0)" onclick="doGTranslate('en|hi')" class="gflag"><img src="https://flagcdn.com/w20/in.png" alt="HI"> HI</a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </header>
+
+    
+    <nav class="navbar">
+    <a class="nav-item" onclick="navigate('home')">Home</a>
+
+    <div class="dropdown">
+        <div class="nav-item" onclick="navigate('about')">
+            About Us <i class="fas fa-chevron-down drop-icon"></i>
+        </div>
+        <div class="dropdown-content">
+            <a onclick="navigate('about'); switchAboutTab('intro', document.querySelector('.abt-menu-item'))">Introduction</a>
+            <a onclick="navigate('about'); switchAboutTab('mission', document.querySelectorAll('.abt-menu-item')[1])">Mission & Vision</a>
+            <a onclick="navigate('about'); switchAboutTab('dream', document.querySelectorAll('.abt-menu-item')[2])">Our Dream</a>
+            <a onclick="navigate('about'); switchAboutTab('advantages', document.querySelectorAll('.abt-menu-item')[3])">Advantages</a>
+            <a onclick="navigate('about'); switchAboutTab('director', document.querySelectorAll('.abt-menu-item')[4])">Director's Message</a>
+            <a onclick="navigate('about'); switchAboutTab('team', document.querySelectorAll('.abt-menu-item')[5])">Management Team</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+    <div class="nav-item" onclick="navigate('courses')" style="cursor: pointer;">
+        Courses <i class="fas fa-chevron-down drop-icon"></i>
+    </div>
+    <div class="dropdown-content">
+        <a onclick="goToCourseCategory('')">All Courses</a>
+        <a onclick="goToCourseCategory('Computer')">Computer Courses</a>
+        <a onclick="goToCourseCategory('Teacher')">Teacher Training</a>
+        <a onclick="goToCourseCategory('NIELIT')">NIELIT Courses</a>
+        <a onclick="goToCourseCategory('Boutique')">Boutique Courses</a>
+        <a onclick="goToCourseCategory('Beautician')">Beautician Courses</a>
+        <a onclick="goToCourseCategory('UG')">UG & PG Courses</a>
+        <a onclick="goToCourseCategory('Yoga')">YOGA Courses</a>
+        <a onclick="goToCourseCategory('NDLM')">NDLM Courses</a>
+        <a onclick="goToCourseCategory('Advance')">Advance Courses</a>
+    </div>
+</div>
+
+    <div class="dropdown">
+        <div class="nav-item" onclick="navigate('login')">
+            Student Zone <i class="fas fa-chevron-down drop-icon"></i>
+        </div>
+        <div class="dropdown-content">
+            <a onclick="navigate('login')">Student Login</a>
+            <a onclick="navigate('login')">Online Exam</a>
+            <a onclick="navigate('login')">Result Verification</a>
+            <a onclick="navigate('login')">Download Admit Card</a>
+        </div>
+    </div>
+
+    <a class="nav-item" onclick="navigate('gallery')">Student Work</a>
+
+    <div class="dropdown">
+    <div class="nav-item" style="cursor: pointer;">
+        Get In Touch <i class="fas fa-chevron-down drop-icon"></i>
+    </div>
+   <div class="dropdown-content">
+    <a onclick="navigate('downloads')">
+        <i class="fas fa-download" style="color: #0878f7;"></i> Downloads Zone
+    </a>
+    
+    <a onclick="navigate('page-appreciation')">
+        <i class="fas fa-award" style="color: #ff6b00;"></i> Appreciation Letter
+    </a>
+    
+    <a onclick="navigate('linkage')">
+        <i class="fas fa-link" style="color: #28a745;"></i> Linkage & Affiliation
+    </a>
+    
+    
+    </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="nav-item" onclick="navigate('center-login')">
+            Franchise <i class="fas fa-chevron-down drop-icon"></i>
+        </div>
+        <div class="dropdown-content">
+            <a onclick="navigate('center-login')">ASC Login</a>
+            <a onclick="navigate('affiliation-process')">
+        <i class="fas fa-handshake" style="color: #333;"></i> How to get Affiliation
+    </a>
+    
+    <a onclick="navigate('center-login')">
+        <i class="fas fa-tools" style="color: #555;"></i> Auth. Service Center
+    </a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+    <div class="nav-item" style="background: rgba(0,0,0,0.05); cursor: pointer;">
+        <i class="fas fa-lock" style="font-size: 12px;"></i> Portals <i class="fas fa-chevron-down drop-icon"></i>
+    </div>
+    
+    <div class="dropdown-content">
+        <a onclick="navigate('super-login')">
+            <i class="fas fa-user-shield" style="color: gold;"></i> Super Admin
+        </a>
+        
+        <a onclick="navigate('team-login')">
+            <i class="fas fa-id-badge" style="color: #555;"></i> Staff Login
+        </a>
+    </div>
+</div>
+    </div>
+
+    <a class="nav-item" onclick="navigate('contact')">Contact Us</a>
+    <a class="nav-item" onclick="navigate('gallery')" style="cursor: pointer;">
+    <i class="fas fa-images"></i> Gallery
+</a>
+</nav>
+
+    <div id="page-home" class="page-section active-page">
+    
+    <div class="sg-hero-section">
+        <div class="sg-slide active" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+            <div class="sg-slide-caption">
+                <h2>Empowering Digital India</h2>
+                <p>Providing quality computer education to every corner of society.</p>
+            </div>
+        </div>
+        <div class="sg-slide" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+            <div class="sg-slide-caption">
+                <h2>Skill Development Mission</h2>
+                <p>Join our vocational courses and build a better career.</p>
+            </div>
+        </div>
+        <div class="sg-slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c54be3852f33?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+            <div class="sg-slide-caption">
+                <h2>Authorized Study Centers</h2>
+                <p>Become a franchise partner and grow with us.</p>
+            </div>
+        </div>
+        <div class="sg-slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c54be3852f33?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
+            <div class="sg-slide-caption">
+                <h2>Authorized Study Centers</h2>
+                <p>Become a franchise partner and grow with us.</p>
+            </div>
+        </div>
+        <button id="prevBtn" class="slider-btn prev-btn">&#10094;</button>
+        <button id="nextBtn" class="slider-btn next-btn">&#10095;</button>
+
+        </div>
+
+        <div style="background: #333; color: white; padding: 10px; display: flex; align-items: center;">
+        <div style="background: var(--accent); padding: 5px 15px; font-weight: bold; border-radius: 4px; margin-right: 15px;">Enquiry Now  </div>
+        <marquee style="flex: 1;" onmouseover="this.stop()" onmouseout="this.start()">
+            आवश्यक सूचना: Lifeway Computer Education की केवल एक ही आधिकारिक वेबसाइट है, इसलिए फर्जी और जालसाज लोगों से सावधान रहें। Lifeway Computer Education किसी भी प्रकार का नकद (Cash) लेनदेन नहीं करता है। कृपया किसी भी व्यक्ति को नकद भुगतान न करें। सभी लेनदेन केवल संस्था के बैंक खाते (Account) के माध्यम से ही करें।  |   Disclaimer: The organization does not guarantee the applicability of its certificates for all government jobs. The recognition and acceptance of certificates are strictly subject to the specific eligibility requirements outlined in individual government recruitment notifications or by the recruiting agency.   
+        </marquee>
+        </div>
+
+        <div class="container">
+            <div class="sec-title"><h2>Lifeway Online Learning</h2></div>
+        <div class="online-feat-box">
+            <div class="feat-list">
+                <div class="feat-item"><div class="feat-circle">L</div> Online Certification</div>
+                <div class="feat-item"><div class="feat-circle">I</div> E-Learning & Live Classes</div>
+                <div class="feat-item"><div class="feat-circle">F</div> Video / Audio / E-Books</div>
+                <div class="feat-item"><div class="feat-circle">E</div> Learn In-Demand Skills</div>
+                <div class="feat-item" style="background: var(--primary); color: white; justify-content: center; cursor: pointer;" onclick="navigate('contact')">
+                    Enroll Now <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="feat-img"></div>
+        </div>
+        </div>
+
+        <div class="achieve-grid">
+        <div class="achieve-card">
+            <i class="fas fa-school achieve-icon"></i>
+            <div class="achieve-num" data-target="150">100+</div>
+            <div class="achieve-label">Study Centers</div>
+        </div>
+        <div class="achieve-card">
+            <i class="fas fa-book-open achieve-icon"></i>
+            <div class="achieve-num" data-target="85">100+</div>
+            <div class="achieve-label">Courses Offered</div>
+        </div>
+        <div class="achieve-card">
+            <i class="fas fa-user-graduate achieve-icon"></i>
+            <div class="achieve-num" data-target="5000">   2000+</div>
+            <div class="achieve-label">Happy Students</div>
+        </div>
+        <div class="achieve-card">
+            <i class="fas fa-map-marker-alt achieve-icon"></i>
+            <div class="achieve-num" data-target="12">8+ </div>
+            <div class="achieve-label">States Covered</div>
+        </div>
+        </div>
+
+            <div class="news-links-wrapper">
+                <div class="link-column">
+                
+                    <button class="quick-btn left-style" onclick="openBankModal()">
+            <i class="fas fa-university quick-icon"></i> Bank Details
+        </button>
+
+        <button class="quick-btn left-style" onclick="openSuggestionModal()">
+            <i class="fas fa-comment-dots quick-icon"></i> Suggestions
+        </button>
+                <button class="quick-btn left-style" onclick="openFranchiseQuery()">
+            <i class="fas fa-handshake quick-icon"></i> Franchise Query
+        </button>
+        <button class="quick-btn left-style" onclick="openVerifyCenterModal()">
+                <i class="fas fa-check-circle quick-icon"></i> Verify Center
+            </button>
+        <button class="quick-btn left-style" onclick="contact()">
+            <i class="fas fa-check-circle quick-icon"></i> Job Seekers 
+        </button>
+
+        </div>
+
+       <div class="quick-link-box left-style" style="display:block; padding:0; overflow:hidden;">
+    
+            <div style="background: linear-gradient(to right, #e11d48, #be123c); color: white; padding: 10px 15px; font-weight: bold; border-radius: 0 25px 0 0;">
+                <i class="fas fa-bell"></i> Latest Updates
+            </div>
+
+            <div style="padding: 10px; background: #fff5f7;">
+                <marquee direction="up" scrollamount="3" height="200px" onmouseover="this.stop()" onmouseout="this.start()" id="public-news-marquee">
+                    <p style="color:#666; text-align:center;">Loading News...</p>
+                </marquee>
+            </div>
+
+        </div>
+
+                <div class="link-column">
+                    <button class="quick-btn right-side" onclick="navigate('login')">
+            <i class="fas fa-user-lock quick-icon"></i> Student Login
+        </button>
+
+        <button class="quick-btn right-side"        onclick="navigate('login')">
+            <i class="fas fa-laptop-code quick-icon"></i> Online Exam
+        </button>
+        <button class="quick-btn right-side" onclick="openCertCheckModal()">
+            <i class="fas fa-certificate quick-icon"></i> Certificate Check
+        </button>
+                <button class="quick-btn right-side" onclick="openResultModal()">
+            <i class="fas fa-trophy quick-icon"></i> Result Zone
+        </button>
+
+        <button class="quick-btn right-side" onclick="openDownloadModal()">
+            <i class="fas fa-download quick-icon"></i> Downloads
+        </button>
+                </div>
+            </div>
+
+        <div class="activity-split">
+        <div class="activity-card">
+            <div class="act-header">Recently Joined</div>
+            <div id="home-recent-student">
+                <img src="https://via.placeholder.com/100" class="act-img" alt="Student">
+                <div class="act-name">Loading...</div>
+                <div class="act-desc">Course: --</div>
+            </div>
+        </div>
+
+        <div class="activity-card" style="padding:0; border:none; display:flex; align-items:center; height: 320px; overflow: hidden; position: relative; background: #000; border-radius: 8px;">
+    
+    <img id="home-gallery-slider" src="https://via.placeholder.com/800x400?text=Loading+Gallery..." 
+         style="width:100%; height:100%; object-fit:cover; transition: opacity 0.8s ease-in-out; opacity: 1;">
+    
+    <div id="home-gallery-caption" style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: white; padding: 10px; font-size: 14px; text-align: center;">
+        Student Activities
+    </div>
+</div>
+
+        <div class="activity-card">
+            <div class="act-header">Top Center</div>
+            <div id="home-top-center">
+                <img src="https://via.placeholder.com/100?text=Center" class="act-img" alt="Center">
+                <div class="act-name">Loading...</div>
+                <div class="act-desc">Location: --</div>
+            </div>
+        </div>
+        </div>
+
+        <div class="sec-title"><h2>Our Courses</h2></div>
+        <div class="course-cat-grid">
+            <div class="cat-circle"><i class="fas fa-laptop-code cat-icon"></i><div class="cat-title">Computer Courses</div></div>
+        <div class="cat-circle"><i class="fas fa-chalkboard-teacher cat-icon"></i><div class="cat-title">Teacher Training</div></div>
+        <div class="cat-circle"><i class="fas fa-microchip cat-icon"></i><div class="cat-title">Hardware & Networking</div></div>
+        <div class="cat-circle"><i class="fas fa-paint-brush cat-icon"></i><div class="cat-title">Designing & Media</div></div>
+        <div class="cat-circle"><i class="fas fa-mobile-alt cat-icon"></i><div class="cat-title">App Development</div></div>
+        <div class="cat-circle"><i class="fas fa-language cat-icon"></i><div class="cat-title">Spoken English</div></div>
+        </div>
+
+        <div style="background: black; color: white; padding: 40px 0;">
+        
+            <div class="sec-title">
+                <h2 style="color: white; border-bottom-color: white;">Social Media & Gallery</h2>
+            </div>
+
+        <div class="media-row" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        
+        <div class="media-bubble" onclick="window.open('https://www.youtube.com/@Lifewaycomputereduaction', '_blank')" style="cursor: pointer; border-bottom: 3px solid red;">
+            <i class="fab fa-youtube" style="font-size:30px; color:red;"></i>
+            <span style="font-size:10px; color:#333; font-weight:bold; margin-top:5px;">YouTube</span>
+        </div>
+
+        <div class="media-bubble" onclick="window.open('https://www.instagram.com', '_blank')" style="cursor: pointer; border-bottom: 3px solid #C13584;">
+            <i class="fab fa-instagram" style="font-size:30px; color:#C13584;"></i>
+            <span style="font-size:10px; color:#333; font-weight:bold; margin-top:5px;">Instagram</span>
+        </div>
+
+        <div class="media-bubble" onclick="window.open('https://www.facebook.com', '_blank')" style="cursor: pointer; border-bottom: 3px solid #1877F2;">
+            <i class="fab fa-facebook" style="font-size:30px; color:#1877F2;"></i>
+            <span style="font-size:10px; color:#333; font-weight:bold; margin-top:5px;">Facebook</span>
+        </div>
+
+        <div class="media-bubble" style="cursor: pointer; border-bottom: 3px solid #333;">
+            <i class="fas fa-newspaper" style="font-size:30px; color:#333;"></i>
+            <span style="font-size:10px; color:#333; font-weight:bold; margin-top:5px;">Media News</span>
+        </div>
+
+            </div>
+        </div>
+        <div style="width: 100%; display: block; background: #ffffff; border-top: 5px solid #ff0000; padding: 20px 0; margin-top: 0px;">
+            
+        <div class="container">
+        <h3 style="text-align: center; color: #333; font-weight: bold; margin-bottom: 20px;">
+            OUR AFFILIATIONS
+        </h3>
+
+        <marquee scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()" style="width: 100%;">
+            
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ISO_Logo_%28Red_square%29.svg/1024px-ISO_Logo_%28Red_square%29.svg.png" 
+                 style="height: 60px; margin: 0 40px; vertical-align: middle;">
+
+            <img src="https://msme.gov.in/sites/default/files/msme_logo.png" 
+                 style="height: 60px; margin: 0 40px; vertical-align: middle;">
+
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Digital_India_logo.svg/1200px-Digital_India_logo.svg.png" 
+                 style="height: 50px; margin: 0 40px; vertical-align: middle;">
+
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/69/Skill_India.png/220px-Skill_India.png" 
+                 style="height: 60px; margin: 0 40px; vertical-align: middle;">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CSC_Logo_India.svg/1200px-CSC_Logo_India.svg.png" 
+                 style="height: 50px; margin: 0 40px; vertical-align: middle;">
+
+        </marquee>
+            </div>
+        </div>
+            <div id="bankModal" class="cen-modal" style="display: none;">
+            <div class="cen-modal-content" style="text-align: center;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                    <h3 style="color: #0878f7; margin:0;">Fee Payment Details</h3>
+                    <button onclick="closeAllModals()" style="border:none; background:none; font-size:28px; cursor:pointer; line-height:1;">&times;</button>
+                </div>
+                
+        <p style="color:#666; font-size:13px;">Scan to Pay via UPI (GPay/PhonePe/Paytm)</p>
+
+        <div style="display: flex; justify-content: center; margin: 15px 0;">
+            <div id="public-bank-qr" style="padding: 10px; border: 2px dashed #333; min-width: 160px; min-height: 160px;"></div>
+        </div>
+
+        <div style="background:#f0f9ff; padding:15px; text-align: left; border-radius: 8px; font-size: 13px; border-left: 4px solid #0878f7;">
+            <p style="margin:5px 0;"><strong>Bank:</strong> Kotak Mahindra Bank</p>
+            <p style="margin:5px 0;"><strong>Acc Name:</strong> LIFEWAY COMPUTER EDUCATION</p>
+            <p style="margin:5px 0;"><strong>Acc No:</strong> 8412257043</p>
+            <p style="margin:5px 0;"><strong>IFSC:</strong> KKBK0000177 (Branch: Palam)</p>
+        </div>
+            </div>
+        </div>
+
+        <div id="suggestionModal" class="cen-modal" style="display: none;">
+            <div class="cen-modal-content">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                    <h3 style="color: #0878f7; margin:0;">Suggestion Box</h3>
+            <button onclick="closeAllModals()" style="border:none; background:none; font-size:28px; cursor:pointer; line-height:1;">&times;</button>
+        </div>
+        
+        <p style="font-size:12px; color:#666;">Send your feedback directly to the Admin.</p>
+
+        <input type="text" id="sug-name" class="cen-input" placeholder="Your Name" style="width:100%; margin-top:10px; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        <input type="number" id="sug-mobile" class="cen-input" placeholder="Mobile Number" style="width:100%; margin-top:10px; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        <textarea id="sug-text" class="cen-input" rows="4" placeholder="Write your message here..." style="width:100%; margin-top:10px; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
+
+        <button class="btn btn-blue" style="width:100%; margin-top:15px; background:#0878f7; color:white; padding:10px; border:none; border-radius:5px; cursor:pointer;" onclick="submitSuggestion()">
+            Send Message
+        </button>
+            </div>
+        </div>
+        <div id="verifyCenterModal" class="cen-modal" style="display: none;">
+            <div class="cen-modal-content" style="max-width: 400px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+            <h3 style="color: #0878f7; margin:0;">Verify Study Center</h3>
+            <button onclick="closeAllModals()" style="border:none; background:none; font-size:24px; cursor:pointer;">&times;</button>
+        </div>
+        
+        <p style="font-size:13px; color:#666;">Enter the Center Code to check authorization status.</p>
+
+        <input type="text" id="chk-center-code" class="cen-input" placeholder="Enter Center Code (e.g. DL-01)" style="text-transform: uppercase; font-weight:bold;">
+        
+        <button class="btn btn-green" style="width:100%; margin-top:10px;" onclick="verifyCenter()">
+            <i class="fas fa-search"></i> Check Status
+        </button>
+
+        <div id="center-verify-result" style="margin-top: 15px; padding: 10px; border-radius: 5px; font-size: 14px; text-align: center;"></div>
+            </div>
+        </div>
+                
+                <div id="certCheckModal" class="cen-modal" style="display: none;">
+        <div class="cen-modal-content" style="max-width: 400px;">
+        
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+            <h3 style="color: #0878f7; margin:0;">Verify Certificate</h3>
+            <button onclick="closeAllModals()" style="border:none; background:none; font-size:24px; cursor:pointer;">&times;</button>
+        </div>
+        
+        <p style="font-size:13px; color:#666;">Enter the Roll Number printed on your certificate.</p>
+
+        <input type="text" id="chk-cert-roll" class="cen-input" placeholder="Enter Roll No (e.g. LIFE101)" style="text-transform: uppercase; font-weight: bold;letter-spacing: 1px;">
+        
+        <button class="btn btn-green" style="width:100%; margin-top:10px;" onclick="verifyCertificate()">
+            <i class="fas fa-search"></i> Check Status
+        </button>
+
+        <div id="cert-verify-result" style="margin-top: 15px; text-align: left;"></div>
+
+            </div>
+        </div>
+        <div id="resultModal" class="cen-modal" style="display: none;">
+            <div class="cen-modal-content" style="max-width: 500px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+            <h3 style="color: #0878f7; margin:0;">Check Your Result</h3>
+            <button onclick="closeAllModals()" style="border:none; background:none; font-size:24px; cursor:pointer;">&times;</button>
+        </div>
+
+        <p style="font-size:13px; color:#666;">Enter Roll Number to view marksheet.</p>
+
+        <div style="display: flex; gap: 10px;">
+            <input type="text" id="res-roll" class="cen-input" placeholder="Roll No (e.g. LIFE101)" style="text-transform: uppercase; font-weight: bold; margin-bottom:0;">
+            <button class="btn btn-blue" onclick="showResult()" style="width: 120px;">Show</button>
+        </div>
+
+        <div id="result-display-area" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <div id="downloadModal" class="cen-modal" style="display: none;">
+         <div class="cen-modal-content">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+            <h3 style="color: #0878f7; margin:0;">Student Downloads</h3>
+            <button onclick="closeAllModals()" style="border:none; background:none; font-size:24px; cursor:pointer;">&times;</button>
+        </div>
+
+        <div style="display: grid; gap: 10px;">
+            <a href="#" class="download-item" onclick="alert('Downloading Syllabus...')" style="text-decoration:none;">
+                <div style="display:flex; align-items:center; background:#f9f9f9; padding:10px; border-radius:5px; border:1px solid #ddd;">
+                    <i class="fas fa-file-pdf" style="color: #e11d48; font-size: 24px; margin-right: 15px;"></i>
+                    <div>
+                        <div style="color:#333; font-weight:bold; font-size:14px;">ADCA Course Syllabus</div>
+                        <div style="color:#666; font-size:11px;">PDF File • 2.5 MB</div>
+                    </div>
+                    <i class="fas fa-download" style="margin-left:auto; color:#0878f7;"></i>
+                </div>
+            </a>
+
+            <a href="#" class="download-item" onclick="alert('Downloading Form...')" style="text-decoration:none;">
+                <div style="display:flex; align-items:center; background:#f9f9f9; padding:10px; border-radius:5px; border:1px solid #ddd;">
+                    <i class="fas fa-file-word" style="color: #2563eb; font-size: 24px; margin-right: 15px;"></i>
+                    <div>
+                        <div style="color:#333; font-weight:bold; font-size:14px;">Offline Exam Form</div>
+                        <div style="color:#666; font-size:11px;">MS Word • 1.2 MB</div>
+                    </div>
+                    <i class="fas fa-download" style="margin-left:auto; color:#0878f7;"></i>
+                </div>
+            </a>
+            
+            <a href="#" class="download-item" onclick="alert('Downloading Prospectus...')" style="text-decoration:none;">
+                <div style="display:flex; align-items:center; background:#f9f9f9; padding:10px; border-radius:5px; border:1px solid #ddd;">
+                    <i class="fas fa-book" style="color: #16a34a; font-size: 24px; margin-right: 15px;"></i>
+                    <div>
+                        <div style="color:#333; font-weight:bold; font-size:14px;">Institute Prospectus 2024</div>
+                        <div style="color:#666; font-size:11px;">PDF File • 5.0 MB</div>
+                    </div>
+                    <i class="fas fa-download" style="margin-left:auto; color:#0878f7;"></i>
+                </div>
+            </a>
+        </div>
+            </div>
+            <div style="clear: both; margin-bottom: 40px;"></div>
+
+        <div class="page-section" style="background: #f8f9fa; border-top: 4px solid #0878f7; padding: 40px 0; width: 100%; display: block;">
+    
+             <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #333; text-transform: uppercase; margin: 0;">
+                <span style="color: #e11d48;">Our</span> Affiliations & <span style="color: #0878f7;">Partners</span>
+            </h2>
+            <div style="width: 100px; height: 3px; background: #e11d48; margin: 10px auto;"></div>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <marquee direction="left" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()">
+                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ISO_Logo_%28Red_square%29.svg/1024px-ISO_Logo_%28Red_square%29.svg.png" 
+                     style="height: 60px; margin: 0 30px; vertical-align: middle;">
+
+                <a href="https://imgbb.com/"><img src="https://i.ibb.co/ksr83QNs/image.png" alt="image" border="0"></a> 
+                     style="height: 60px; margin: 0 30px; vertical-align: middle;">
+
+                <img src="https://niti.gov.in/sites/default/files/2019-10/NITI-Aayog-logo.png" 
+                     style="height: 50px; margin: 0 30px; vertical-align: middle;">
+
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Digital_India_logo.svg/1200px-Digital_India_logo.svg.png" 
+                     style="height: 50px; margin: 0 30px; vertical-align: middle;">
+
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/69/Skill_India.png/220px-Skill_India.png" 
+                     style="height: 60px; margin: 0 30px; vertical-align: middle;">
+
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CSC_Logo_India.svg/1200px-CSC_Logo_India.svg.png" 
+                     style="height: 45px; margin: 0 30px; vertical-align: middle;">
+                     
+                <img src="https://www.startupindia.gov.in/content/dam/invest-india/newhomepage/Logo1.png" 
+                     style="height: 50px; margin: 0 30px; vertical-align: middle;">
+
+            </marquee>
+        </div>
+
+            </div>
+        </div>
+
+        <div style="clear: both; margin-bottom: 20px;"></div>
+            
+        </div>
+
+
+    </div>
+    </div>
+    </div>        
+   
+        <div id="page-downloads" class="page-section">
+    
+    <div class="res-banner">
+        <h1>Resources & Downloads</h1>
+        <p>Access official documents, forms, and affiliation details.</p>
+    </div>
+
+    <div class="container">
+        
+        <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; color: #444;">
+            <i class="fas fa-file-alt" style="color: #0878f7;"></i> Student & Center Forms
+        </h3>
+
+        <div class="res-grid">
+            <div class="dl-card pdf">
+                <div class="dl-info">
+                    <h4>Student Admission Form</h4>
+                    <p>For Offline Registration (PDF, 2MB)</p>
+                </div>
+                <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+            </div>
+
+            <div class="dl-card pdf">
+                <div class="dl-info">
+                    <h4>Franchise Application Form</h4>
+                    <p>New Center Registration (PDF, 3.5MB)</p>
+                </div>
+                <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+            </div>
+
+            <div class="dl-card img">
+                <div class="dl-info">
+                    <h4>Sample Certificate</h4>
+                    <p>View our ISO Certified Format (JPG)</p>
+                </div>
+                <a href="#" class="dl-btn"><i class="fas fa-eye"></i></a>
+            </div>
+
+            <div class="dl-card doc">
+                <div class="dl-info">
+                    <h4>Course Brochure 2025</h4>
+                    <p>Syllabus & Fee Structure (PDF)</p>
+                </div>
+                <a href="#" class="dl-btn"><i class="fas fa-file-pdf"></i></a>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; color: #444;">
+            <i class="fas fa-handshake" style="color: #ff6b00;"></i> How to Get Affiliation?
+        </h3>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <div>
+                    <h4>Submit Application</h4>
+                    <p>Download the Franchise form above, fill it out, and email it to <strong>lifewaycomputer100@gmail.com</strong>.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <div>
+                    <h4>Document Verification</h4>
+                    <p>Our team will verify your Aadhar, Pan Card, and Center Photos within 48 hours.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <div>
+                    <h4>Fee Payment</h4>
+                    <p>Pay the franchise registration fee online or via bank transfer.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <div>
+                    <h4>Authorized Letter</h4>
+                    <p>Receive your Authorization Letter and Login Credentials instantly.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-orange" style="margin-top: 20px; width: 100%;" onclick="navigate('contact')">
+                Apply Now <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+    </div>
+    <div id="page-appreciation" class="page-section" style="display: none;">
+    <div class="page-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80'); background-size: cover; padding: 80px 20px; text-align: center; color: white;">
+        <h1 style="font-size: 40px; margin-bottom: 10px;">Appreciation & Awards</h1>
+        <p style="font-size: 18px; opacity: 0.9;">Recognition of our excellence in computer literacy.</p>
+    </div>
+
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="sec-title" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 28px;">Letters of Appreciation</h2>
+            <div style="width: 60px; height: 3px; background: #e11d48; margin: 10px auto;"></div>
+        </div>
+        
+        <div class="cert-grid">
+            <div class="cert-item">
+                <img src="https://via.placeholder.com/300x400?text=DM+Letter" alt="Appreciation Letter">
+                <div class="cert-caption">District Magistrate Appreciation</div>
+            </div>
+            <div class="cert-item">
+                <img src="https://via.placeholder.com/300x400?text=ISO+Award" alt="Award">
+                <div class="cert-caption">Best Institute Award 2024</div>
+            </div>
+            <div class="cert-item">
+                <img src="https://via.placeholder.com/300x400?text=Social+Work" alt="Letter">
+                <div class="cert-caption">Social Service Recognition</div>
+            </div>
+             <div class="cert-item">
+                <img src="https://via.placeholder.com/300x400?text=Sarpanch+Letter" alt="Letter">
+                <div class="cert-caption">Gram Panchayat Appreciation</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="page-linkage" class="page-section" style="display: none;">
+    <div class="page-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80'); background-size: cover; padding: 80px 20px; text-align: center; color: white;">
+        <h1 style="font-size: 40px; margin-bottom: 10px;">Linkage & Affiliations</h1>
+        <p style="font-size: 18px; opacity: 0.9;">Our official accreditations and partners.</p>
+    </div>
+
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="sec-title" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: #333; font-size: 28px;">Authorized Partners</h2>
+            <div style="width: 60px; height: 3px; background: #0878f7; margin: 10px auto;"></div>
+        </div>
+        
+        <div class="linkage-box">
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png" class="partner-logo" alt="Govt">
+                <div class="partner-name">Registered Under Govt. of India</div>
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/ISO_9001-2015.svg" class="partner-logo" alt="ISO">
+                <div class="partner-name">ISO 9001:2015 Certified</div>
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/NITI_Aayog_logo.svg/1200px-NITI_Aayog_logo.svg.png" class="partner-logo" alt="Niti Aayog">
+                <div class="partner-name">Registered with NITI Aayog</div>
+            </div>
+            <div class="partner-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/95/MSME_Ministry_Logo.svg/1200px-MSME_Ministry_Logo.svg.png" class="partner-logo" alt="MSME">
+                <div class="partner-name">MSME Registered Enterprise</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; background: #f9f9f9; padding: 30px; border-radius: 10px; border-left: 5px solid #0878f7;">
+            <h3 style="margin-top: 0; color: #333;"><i class="fas fa-file-contract" style="color:#0878f7;"></i> Legal Status & Validations</h3>
+            <ul style="line-height: 2; color: #555; margin-top: 15px; list-style-type: square; padding-left: 20px;">
+                <li>Registered under <strong>Trust/Society Act</strong>, Govt of India.</li>
+                <li>Trademark Registered under <strong>Intellectual Property India</strong>.</li>
+                <li>Curriculum designed as per <strong>National Occupational Standards (NOS)</strong>.</li>
+                <li>Valid for <strong>Employment Exchange Registration</strong> throughout India.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="page-affiliation-process" class="page-section">
+    <div class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80');">
+        <h1>Start Your Own Center</h1>
+        <p>Join India's fastest growing computer education network.</p>
+    </div>
+
+    <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+            <h2 style="color: var(--primary);">Franchise Process</h2>
+            <p style="color: #666;">Follow these 4 simple steps to become an Authorized Study Center (ASC) of Lifeway Computer Education.</p>
+        </div>
+
+        <div class="process-row">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Fill Application Form</h3>
+                    <p>Visit our "Downloads" section, get the Franchise Form, fill it with your center details, and email it to us or submit via the Contact page.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Document Verification</h3>
+                    <p>Submit KYC documents (Aadhar, PAN), Center Photos (Lab, Classroom, Reception), and Address Proof. Our team will verify them within 24 hours.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Fee Payment</h3>
+                    <p>Pay the Franchise Registration Fee online. We offer low-cost affiliation models for rural areas to promote digital literacy.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Authorization & Login</h3>
+                    <p>Receive your unique <strong>Center Code</strong>, Authorization Certificate, and Login Credentials to access the Center Admin Panel.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn btn-orange" onclick="navigate('contact')" style="padding: 15px 40px; font-size: 16px;">
+                Apply for Franchise Now <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div id="page-about" class="page-section">
+    
+    <div class="abt-banner">
+        <h1>Who We Are</h1>
+        <p>Building the Future of Digital Education</p>
+    </div>
+
+    <div class="container abt-layout">
+        
+        <div class="abt-sidebar">
+            <div class="abt-menu-item active" onclick="switchAboutTab('intro', this)">
+                <i class="fas fa-info-circle"></i> About Us
+            </div>
+            <div class="abt-menu-item" onclick="switchAboutTab('mission', this)">
+                <i class="fas fa-bullseye"></i> Mission & Vision
+            </div>
+            <div class="abt-menu-item" onclick="switchAboutTab('dream', this)">
+                <i class="fas fa-cloud"></i> Our Dream
+            </div>
+            <div class="abt-menu-item" onclick="switchAboutTab('advantages', this)">
+                <i class="fas fa-thumbs-up"></i> Advantages
+            </div>
+            <div class="abt-menu-item" onclick="switchAboutTab('director', this)">
+                <i class="fas fa-user-tie"></i> Director's Message
+            </div>
+            <div class="abt-menu-item" onclick="switchAboutTab('team', this)">
+                <i class="fas fa-users"></i> Management Team
+            </div>
+        </div>
+
+        <div class="abt-content">
+
+            <div id="abt-tab-intro" class="abt-tab active-tab">
+                <h2 class="abt-title">About Lifeway Computer Education</h2>
+                <div class="abt-text-block">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="abt-float-img">
+                    <p><strong>Lifeway Computer Education </strong> is a premier ISO 9001:2015 certified institute registered under the Govt. of India. We are dedicated to providing high-quality computer education to students across urban and rural India at affordable costs.</p>
+                    <p>Established with a vision to eradicate computer illiteracy, we have grown into a vast network of authorized study centers. Our curriculum is designed by industry experts to ensure our students are job-ready from day one.</p>
+                    <p>We offer a wide range of courses including ADCA, DCA, Web Design, Accounting, and Hardware Networking. Our certification is recognized nationwide, opening doors to employment in both government and private sectors.</p>
+                </div>
+            </div>
+
+            <div id="abt-tab-mission" class="abt-tab">
+                <h2 class="abt-title">Mission & Vision</h2>
+                <div class="mv-grid">
+                    <div class="mv-card">
+                        <i class="fas fa-rocket mv-icon"></i>
+                        <h3>Our Mission</h3>
+                        <p>To provide professional technical education to the grassroots level of society. We aim to empower youth by providing them with the skills needed to thrive in the digital economy.</p>
+                    </div>
+                    <div class="mv-card">
+                        <i class="fas fa-eye mv-icon"></i>
+                        <h3>Our Vision</h3>
+                        <p>To become India's most trusted education network, bridging the digital divide and creating a knowledgeable, skilled workforce for the future of our nation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="abt-tab-dream" class="abt-tab">
+                <h2 class="abt-title">Our Dream</h2>
+                <div class="dream-box">
+                    <i class="fas fa-quote-left dream-quote"></i>
+                    <p class="dream-text">
+                        "We dream of an India where every child, regardless of their economic background, has access to a computer. We envision a society where digital literacy is not a luxury, but a fundamental right. Our dream is to see our students leading the IT revolution globally."
+                    </p>
+                </div>
+            </div>
+
+            <div id="abt-tab-advantages" class="abt-tab">
+                <h2 class="abt-title">Why Choose Us?</h2>
+                <ul class="adv-list">
+                    <li><i class="fas fa-check-circle"></i> <strong>ISO 9001:2015 Certified</strong> Organization.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Govt. Registered</strong> & Recognized Courses.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Affordable Fee Structure</strong> for rural students.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Online Verification</strong> of Certificates & Marksheets.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Quality Study Material</strong> provided to every student.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Placement Assistance</strong> via our Job Portal.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Valid for Govt. Jobs</strong> across India.</li>
+                </ul>
+            </div>
+
+            <div id="abt-tab-director" class="abt-tab">
+                <h2 class="abt-title">Director's Message</h2>
+                <div class="dir-card">
+                    <a href="https://ibb.co/gZwtH9jQ"><img src="https://i.ibb.co/5hvst4MC/Whats-App-Image-2026-01-21-at-15-35-18.jpg" alt="Whats-App-Image-2026-01-21-at-15-35-18" height="1200px"  width="1200px" border="-50%"></a>
+                    <div class="dir-content">
+                        <h3>Mr. Arvind Kumar</h3>
+                        <p class="dir-pos">Founder & Chairman</p>
+                        <hr style="border:0; border-top:1px solid #ddd; margin:15px 0;">
+                        <p style="font-style: italic; color:#555;">
+                            "Information Technology has become a fastest growing Industry in today's scenario which is providing thousands of job to well trained professionals. India has achieved a terrible growth in this field and is being considered as a Super Power in the world. Information Technology is providing the upcoming future that will change every face of Human existence. Our Mission LIFEWAY COMPUTER EDUCATION has been decided to provide the Computer Education by the help of State & Indian Government planning & Programmers announces time to time in nominal charge for every person of our lower and middle class of society.
+I wish and try to success the dream of computer education in all India... I am sure our students can meet any demand & challenges that the employer may have on them. I wish them great success in all their endeavors and quest for a better tomorrow, for themselves and for the mankind. We give almost care to develop over all personality of the students. It is important to become good human being first and an excellent
+I wish for their great success and bright future and hope for their better tomorrow."
+                        </p>
+                        <br>
+                        <p><strong>Jai Hind.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="abt-tab-team" class="abt-tab">
+                <h2 class="abt-title">Our Management Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-img-box">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        </div>
+                        <h4>Ms. Anita Singh</h4>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-box">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        </div>
+                        <h4>Mr. Vikram Das</h4>
+                        <p>Academic Head</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-box">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                        </div>
+                        <h4>Ms. Priya Sharma</h4>
+                        <p>Center Coordinator</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+    
+
+
+</button>
+<div id="page-courses" class="page-section" style="display: none;">
+    
+    <div class="abt-banner" style="background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; padding: 80px 20px; text-align: center; color: white;">
+        <h1 style="font-size: 42px; margin-bottom: 10px; font-weight: 800;">Professional Courses</h1>
+        <p style="font-size: 18px; opacity: 0.9;">Upgrade your skills with industry-leading certifications</p>
+    </div>
+
+    <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+        
+        <div class="course-filter-bar" style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #eee; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+            
+            <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 250px; background: white; padding: 10px 15px; border: 1px solid #ddd; border-radius: 50px;">
+                <i class="fas fa-search" style="color: #0878f7;"></i>
+                <input type="text" id="public-course-search" placeholder="Search courses (e.g. ADCA, Tally)..." onkeyup="renderPublicCourses()" style="border: none; outline: none; width: 100%; font-size: 14px;">
+            </div>
+            
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <span style="font-size: 13px; font-weight: bold; color: #555;">Sort By:</span>
+                <select id="public-course-sort" onchange="renderPublicCourses()" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd; cursor: pointer;">
+                    <option value="newest">✨ Newest First</option>
+                    <option value="oldest">📅 Oldest First</option>
+                    <option value="name">🔤 Name (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="public-course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <p style="text-align: center; width: 100%; color: #666;">Loading Courses...</p>
+        </div>
+
+    </div>
+</div>
+<div id="page-gallery" class="page-section" style="display:none;">
+    <div class="abt-banner" style="background: linear-gradient(to right, #9333ea, #3b82f6);">
+        <h1>Our Gallery</h1>
+        <p>Moments & Memories of Lifeway Computer Education</p>
+    </div>
+
+    <div class="container" style="margin-top:40px; margin-bottom:40px;">
+        
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+            <button class="btn" style="background: #333; color: white;" onclick="renderPublicGallery('All')">All</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Events')">Events</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Campus')">Campus</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Awards')">Awards</button>
+        </div>
+
+        <div id="public-gallery-grid" class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            </div>
+    </div>
+</div>
+<div id="page-login" class="page-section">
+        <div style="max-width: 400px; margin: 50px auto;" class="card">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Student Login</h2>
+            <label>Enrollment No</label>
+            <input type="text" id="std-user" placeholder="Enter Enrollment No">
+            <label>Password</label>
+            <input type="password" id="std-pass" placeholder="Enter Password">
+            <button class="btn btn-blue" style="width: 100%; margin-top: 15px;" onclick="studentLogin()">Login</button>
+            <p style="font-size: 11px; text-align: center; margin-top: 15px; color: #888;">Demo: LIFE101 / 12345</p>
+        </div>
+    </div>
+     <div id="page-std-dashboard" class="page-section">
+    <div class="top-header" style="background: #1e293b;">
+        <span style="font-weight: bold; color:white;">STUDENT PORTAL</span>
+        <button class="btn btn-red" style="padding: 2px 10px; font-size: 11px;" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container std-layout">
+        
+        <div class="std-sidebar">
+            <div class="std-profile-box">
+                <img id="std-dash-img" src="https://via.placeholder.com/150" class="std-img">
+                <label for="std-photo-upload" class="std-cam-btn"><i class="fas fa-camera"></i></label>
+                <input type="file" id="std-photo-upload" style="display:none;" accept="image/*" onchange="uploadStudentPhoto(this)">
+            </div>
+            <h3 id="std-dash-name" style="margin-bottom: 5px;">Student Name</h3>
+            <p id="std-dash-roll" style="color: #666; font-size: 13px; margin-bottom: 20px;">Roll No</p>
+
+            <button class="std-menu-btn active" onclick="switchStdTab('home', this)"><i class="fas fa-home"></i> Dashboard</button>
+            <button class="std-menu-btn" onclick="switchStdTab('idcard', this)"><i class="fas fa-id-card"></i> ID Card</button>
+            <button class="std-menu-btn" onclick="switchStdTab('marks', this)"><i class="fas fa-poll"></i> Marksheet</button>
+            <button class="std-menu-btn" onclick="switchStdTab('attendance', this)"><i class="fas fa-qrcode"></i> Attendance</button>
+        </div>
+
+        <div class="std-content">
+            
+            <div id="std-view-home">
+                <h2 style="border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Overview</h2>
+                <div class="sa-stat-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 30px;">
+                    <div class="sa-stat-box" style="border-left-color: var(--success);">
+                        <h3 id="std-dash-att">0%</h3>
+                        <p>Attendance</p>
+                    </div>
+                    <div class="sa-stat-box" style="border-left-color: var(--primary);">
+                        <h3 id="std-dash-course">--</h3>
+                        <p>Active Course</p>
+                    </div>
+                    <div class="sa-stat-box" style="border-left-color: var(--danger);">
+                        <h3 id="std-dash-due" style="color:red;">₹0</h3>
+                        <p>Fees Due</p>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-bullhorn"></i> Important Notices</h4>
+                <div id="std-notice-board" style="background: #fffbeb; padding: 15px; border-radius: 8px; border: 1px solid #fcd34d; margin-top: 10px; max-height: 200px; overflow-y: auto;">
+                    </div>
+            </div>
+
+            <div id="std-view-idcard" style="display:none; text-align: center;">
+                <h2 style="margin-bottom: 30px;">Digital Identity Card</h2>
+                
+                <div style="display: flex; justify-content: center;">
+                    <div id="id-card-target" class="id-card-wrap">
+                        <div class="id-header-bg">
+                            <div style="padding: 15px; color: white; text-align: center;">
+                                <div style="font-weight: bold; letter-spacing: 1px;">LIFEWAY COMPUTERS</div>
+                                <div style="font-size: 10px;">ISO 9001:2015 CERTIFIED INSTITUTE</div>
+                            </div>
+                            <div class="id-photo-frame">
+                                <a href="https://ibb.co/JwZvNZSM"><img src="https://i.ibb.co/hJ0Bk0Tt/ID-CARD-2-2.jpg" alt="ID-CARD-2-2" border="0"></a>
+                            </div>
+                        </div>
+                        <div class="id-body">
+                            <div id="id-card-name" class="id-name">Student Name</div>
+                            <div id="id-card-roll" class="id-roll">LF2025001</div>
+                            <div class="id-grid">
+                                <div class="id-row"><span>Course:</span> <strong id="id-card-course">ADCA</strong></div>
+                                <div class="id-row"><span>Center:</span> <strong id="id-card-center">DL-01</strong></div>
+                                <div class="id-row"><span>DOB:</span> <strong id="id-card-dob">01-01-2000</strong></div>
+                                <div class="id-row"><span>Valid Upto:</span> <strong>Dec 2025</strong></div>
+                            </div>
+                            <div style="height: 30px; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); width: 80%; margin: 0 auto;"></div>
+                        </div>
+                        <div class="id-footer">
+                            <span>www.lifewaycomputereducation.com</span>
+                            <span>Auth. Signatory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-orange" style="margin-top: 30px; padding: 15px 30px;" onclick="stdDownloadID()">
+                    <i class="fas fa-download"></i> Download ID Card
+                </button>
+            </div>
+
+            <div id="std-view-marks" style="display:none;" oncontextmenu="return false">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>Examination Result</h2>
+                    <span style="background: #fee2e2; color: #991b1b; padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                        <i class="fas fa-eye"></i> View Only Mode
+                    </span>
+                </div>
+
+                <div class="secure-marksheet">
+                    <div style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px;">
+                        <h1 style="color: var(--primary); margin: 0;">LIFEWAY COMPUTERS</h1>
+                        <p style="margin: 5px 0;">Annual Examination Report</p>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px;">
+                        <div>
+                            <p><strong>Name:</strong> <span id="mark-name"></span></p>
+                            <p><strong>Father's Name:</strong> <span id="mark-father"></span></p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>Roll No:</strong> <span id="mark-roll"></span></p>
+                            <p><strong>Course:</strong> <span id="mark-course"></span></p>
+                        </div>
+                    </div>
+
+                    <table class="sa-table" style="border: 1px solid #ddd;">
+                        <thead>
+                            <tr style="background: #333; color: white;">
+                                <th>Subject / Module</th>
+                                <th>Max Marks</th>
+                                <th>Obtained</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody id="std-marks-tbody">
+                            </tbody>
+                        <tfoot style="background: #f9f9f9; font-weight: bold;">
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Grand Total:</td>
+                                <td id="mark-total-obt">0</td>
+                                <td id="mark-final-status">PASS</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div style="font-size: 12px; color: #666;">
+                            Date of Issue: <span id="mark-date"></span>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="https://ibb.co/MySfCCV1"><img src="https://i.ibb.co/SDyc33nm/Certificate-1.jpg" alt="Certificate-1" border="0"></a>
+                            <p style="border-top: 1px solid #333; font-size: 12px; padding-top: 5px;">Controller of Exams</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 20px; color: red; font-size: 12px;">
+                    <i class="fas fa-lock"></i> Digital Copy. Downloading or Printing is disabled for security. Please collect the original from your center.
+                </p>
+            </div>
+
+            <div id="std-view-attendance" style="display:none;">
+                <h2>Scan Attendance</h2>
+                <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 12px;">
+                    <div id="std-qr-scanner" style="width: 300px; margin: 0 auto; display: none;"></div>
+                    <button class="btn btn-blue" onclick="stdStartScan()">
+                        <i class="fas fa-camera"></i> Open QR Scanner
+                    </button>
+                    <p style="margin-top: 15px; color: #666;">Scan the QR code projected at your center to mark present.</p>
+                </div>
+                <h4 style="margin-top: 30px;">History</h4>
+                <ul id="std-att-log-list" style="list-style: none; padding: 0;"></ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+  
+    
+   <div id="page-center-login" class="page-section">
+    <div style="max-width: 400px; margin: 50px auto;" class="card">
+        <h2 style="text-align: center; color: var(--accent); margin-bottom: 20px;">Franchise Login</h2>
+        <label>Center Code</label>
+        <input type="text" id="cen-user" placeholder="Ex: DL-01">
+        <label>Password</label>
+        <input type="password" id="cen-pass" placeholder="Password">
+        <button class="btn btn-orange" style="width: 100%; margin-top: 15px;" onclick="centerLogin()">Access Dashboard</button>
+        <p style="font-size: 11px; text-align: center; margin-top: 15px; color: #888;">Demo: DL-01 / admin123</p>
+    </div>
+</div>
+
+<div id="page-cen-dashboard" class="page-section" style="padding: 0;">
+    <div class="cen-layout">
+
+        <div class="cen-sidebar">
+            <div class="cen-sidebar-header">
+                <h3 id="cen-dash-title">CENTER PANEL</h3>
+                <p>Franchise Manager</p>
+            </div>
+            <div class="cen-menu-item active" onclick="cenTab('dashboard', this)"><i class="fas fa-th-large"></i> <span>Dashboard</span></div>
+            <div class="cen-menu-item" onclick="cenTab('students', this)"><i class="fas fa-user-graduate"></i> <span>Students</span></div>
+            <div class="cen-menu-item" onclick="cenTab('exams', this)"><i class="fas fa-file-signature"></i> <span>Exams</span></div>
+            <div class="cen-menu-item" onclick="cenTab('batches', this)"><i class="fas fa-clock"></i> <span>Batches</span></div>
+            <div class="cen-menu-item" onclick="cenTab('attendance', this)"><i class="fas fa-qrcode"></i> <span>Attendance</span></div>
+            <div class="cen-menu-item" onclick="cenTab('payments', this)"><i class="fas fa-wallet"></i> <span>Accounts</span></div>
+            <div class="cen-menu-item" onclick="cenTab('users', this)"><i class="fas fa-users-cog"></i> <span>Staff</span></div>
+            <div class="cen-menu-item" onclick="cenTab('reports', this)"><i class="fas fa-chart-line"></i> <span>Reports</span></div>
+            <div class="cen-menu-item" onclick="cenTab('profile', this)">
+                <i class="fas fa-user-shield"></i> <span>Center Profile</span>
+            </div>
+            <div class="cen-menu-item" onclick="cenTab('certificates', this)"><i class="fas fa-certificate"></i> <span>Certificates</span></div>
+            <div class="cen-menu-item" style="color: #ef4444; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);" onclick="logout()"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></div>
+        </div>
+
+        <div class="cen-main">
+
+            <div id="cen-view-dashboard">
+                <div class="sa-header">
+                    <div>
+                        <h2 style="font-size: 24px;">Overview</h2>
+                        <p style="font-size: 13px; color: #64748b;">Real-time statistics</p>
+                    </div>
+                    <button class="btn btn-blue" onclick="loadCenterDash()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+                <div class="cen-welcome-section">
+                    <h4 class="cen-welcome-title">WELCOME , <span id="disp-welcome-name">ARVIND KUMAR</span></h4>
+
+                    <div class="cen-profile-card">
+                        <div class="cen-profile-header">
+                            <h3>Welcome To LIFEWAY COMPUTERS EDUCATION</h3>
+                        </div>
+
+                        <div class="cen-profile-body">
+                            <div class="cen-profile-info">
+                                <table class="cen-info-table">
+                                    <tr>
+                                        <td class="info-label">Director's Name</td>
+                                        <td class="info-value" id="disp-director">ARVIND KUMAR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info-label">Center Name</td>
+                                        <td class="info-value" id="disp-center-name">LIFEWAY COMPUTER EDUCATION</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info-label">Center Code</td>
+                                        <td class="info-value" id="disp-center-code">DL-108</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info-label">Address</td>
+                                        <td class="info-value" id="disp-address">F-36 SANI BAZAR CHOWK MAHAVIR ENCLAVE PART-3 UTTAM NAGAR</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="info-label">State</td>
+                                        <td class="info-value" id="disp-state">Delhi</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="cen-profile-photo-box">
+                                <div class="photo-frame">
+                                    <img id="disp-director-img" src="https://via.placeholder.com/150" alt="Director Photo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cen-profile-footer">
+                            <p><strong>Name : </strong> <span id="disp-footer-name">ARVIND KUMAR</span></p>
+                            <p><strong>Address : </strong> <span id="disp-footer-address">F-36 SANI BAZAR CHOWK MAHAVIR ENCLAVE PART-3 UTTAM NAGAR, SOUTH WEST</span></p>
+                            <p><strong>Pin : </strong> <span id="disp-pin">110059</span></p>
+                            <p><strong>Contact Details : </strong> <span id="disp-contact">999031XXXX , 999078XXXX</span></p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h4 style="margin: 20px 0 15px; color: #94a3b8; font-size: 12px; text-transform: uppercase;">Financials</h4>
+                    <div class="cen-stat-grid">
+                        <div class="cen-stat-card card-green"><i class="fas fa-coins cen-stat-icon"></i>
+                            <h2 id="cen-stat-today">₹0</h2>
+                            <p>Today's Collection</p>
+                        </div>
+                        <div class="cen-stat-card card-blue"><i class="fas fa-wallet cen-stat-icon"></i>
+                            <h2 id="cen-stat-total-pay">₹0</h2>
+                            <p>Total Revenue</p>
+                        </div>
+                        <div class="cen-stat-card card-red"><i class="fas fa-hand-holding-usd cen-stat-icon"></i>
+                            <h2 id="cen-stat-dues">₹0</h2>
+                            <p>Fees Pending</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 20px 0 15px; color: #94a3b8; font-size: 12px; text-transform: uppercase;">Academics</h4>
+                    <div class="cen-stat-grid">
+                        <div class="cen-stat-card"><i class="fas fa-users cen-stat-icon"></i>
+                            <h2 id="cen-stat-students">0</h2>
+                            <p>Total Students</p>
+                        </div>
+                        <div class="cen-stat-card card-orange"><i class="fas fa-user-clock cen-stat-icon"></i>
+                            <h2 id="cen-stat-req">0</h2>
+                            <p>Pending Requests</p>
+                        </div>
+                        <div class="cen-stat-card"><i class="fas fa-user-check cen-stat-icon"></i>
+                            <h2 id="cen-stat-active">0</h2>
+                            <p>Active Students</p>
+                        </div>
+                        <div class="cen-stat-card"><i class="fas fa-file-alt cen-stat-icon"></i>
+                            <h2 id="cen-stat-exams">0</h2>
+                            <p>Exams Scheduled</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-view-students" class="cen-view" style="display:none;">
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin:0; color:#333;">Manage Student</h3>
+                    <p style="font-size:12px; color:#666;">Dashboard > Manage Student</p>
+                </div>
+
+                <div class="cen-std-header-stats">
+                    <button class="btn-stat-display">Total Records 354</button>
+                    <button class="btn-stat-display">Total Diploma / Certificate Issued 182</button>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-green" style="background-color: #22c55e;">Export Data</button>
+                    <button class="btn btn-blue" onclick="cenShowAdmissionForm()">+ Add Student</button>
+                </div>
+
+                <div class="cen-table-container">
+                    <table class="cen-table">
+                        <thead>
+                            <tr class="cen-table-search-row" style="background: #f8fafc;">
+                                <th></th>
+                                <th><input type="text" placeholder="Registration Id"></th>
+                                <th><input type="text" placeholder="Student Name"></th>
+                                <th></th>
+                                <th><input type="date" placeholder="DOB"></th>
+                                <th><input type="text" placeholder="Course"></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th><button class="btn btn-blue" style="padding: 5px 10px; font-size: 12px;">Search</button></th>
+                            </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Registration Id</th>
+                                <th>Student Name</th>
+                                <th>Relative Name</th>
+                                <th>DOB</th>
+                                <th>Course</th>
+                                <th>Scan</th>
+                                <th>Center Code</th>
+                                <th>Paid</th>
+                                <th>Certificate Issued</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="cen-view-admission" class="cen-view" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h3 style="margin:0; color:#333;">Admission Form</h3>
+                    <button class="btn btn-red" onclick="cenHideAdmissionForm()" style="font-size: 12px;">Back to List</button>
+                </div>
+
+                <div class="cen-admission-container">
+                    <form id="admissionForm">
+                        <div class="cen-form-row">
+                            <div>
+                                <label class="cen-form-label">Student Name <span style="color:red">*</span></label>
+                                <input type="text" class="cen-form-input" placeholder="STUDENT NAME">
+                            </div>
+                            <div>
+                                <label class="cen-form-label">Relation</label>
+                                <select class="cen-form-input">
+                                    <option>SELECT RELATION</option>
+                                    <option>Father</option>
+                                    <option>Mother</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="cen-form-row">
+                            <div>
+                                <label class="cen-form-label">Father Name <span style="color:red">*</span></label>
+                                <input type="text" class="cen-form-input" placeholder="FATHER NAME">
+                            </div>
+                            <div>
+                                <label class="cen-form-label">Mother Name <span style="color:red">*</span></label>
+                                <input type="text" class="cen-form-input" placeholder="MOTHER NAME">
+                            </div>
+                        </div>
+
+                        <div class="cen-form-row">
+                            <div>
+                                <label class="cen-form-label">Date Of Birth <span style="color:red">*</span></label>
+                                <input type="date" class="cen-form-input">
+                            </div>
+                            <div>
+                                <label class="cen-form-label">Date Joined <span style="color:red">*</span></label>
+                                <input type="date" class="cen-form-input">
+                            </div>
+                        </div>
+
+                        <div class="cen-form-row">
+                            <div>
+                                <label class="cen-form-label">Qualification <span style="color:red">*</span></label>
+                                <select class="cen-form-input">
+                                    <option>SELECT QUALIFICATION</option>
+                                    <option>8th</option>
+                                    <option>10th</option>
+                                    <option>12th</option>
+                                    <option>Graduate</option>
+                                    <option> Post Graduate</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="cen-form-label">Course <span style="color:red">*</span></label>
+                                <select class="cen-form-input">
+                                    <option>SELECT COURSE</option>
+                                    <option>ADCA</option>
+                                    <option>DCA</option>
+                                    <option>Basic Computer</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="cen-form-row">
+                            <div>
+                                <label class="cen-form-label">State <span style="color:red">*</span></label>
+                                <select id="inp-std-state" class="cen-form-input">
+                                    <option value="">SELECT STATE</option>
+                                    <option value="Delhi">Delhi</option>
+                                    </select>
+                            </div>
+                            <div>
+                                <label class="cen-form-label">Phone No <span style="color:red">*</span></label>
+                                <input type="number" class="cen-form-input" placeholder="PHONE NO">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label class="cen-form-label">Aadhar no</label>
+                            <input type="text" class="cen-form-input" placeholder="PLEASE ENTER AADHAR NO">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label class="cen-form-label">Photo <span style="color:red">*</span></label>
+                            <div class="cen-file-input-wrapper">
+                                <input type="file" id="adm-photo-upload" style="font-size: 14px;">
+                            </div>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button type="button" class="btn btn-blue" style="padding: 10px 30px;" onclick="alert('Student Saved!')">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="cen-view-exams" class="cen-view" style="display:none;">
+                <div class="cen-table-container" style="background: transparent; box-shadow: none; padding: 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                        <div>
+                            <h3 style="color:#1e293b;">Exam Management</h3>
+                            <p style="font-size:13px; color:#64748b;">Schedule is managed by Head Office. Update marks for your center here.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-bottom:15px; color:#475569; border-left:4px solid #3b82f6; padding-left:10px;">
+                        Upcoming Schedule
+                    </h4>
+                    <div id="cen-exam-upcoming" class="exam-card-grid">
+                        </div>
+
+                    <div class="cen-table-container" style="margin-top:30px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                            <h4>Exam History & Results</h4>
+                            <input type="text" class="cen-input" placeholder="Search exam..." style="width:200px;" onkeyup="cenRenderExams()">
+                        </div>
+
+                        <table class="cen-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Exam Name</th>
+                                    <th>Course / Batch</th>
+                                    <th>Total Students</th>
+                                    <th>Status</th>
+                                    <th style="text-align:right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cen-exam-history">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-modal-marks" class="cen-modal" style="display:none;">
+                <div class="cen-modal-content" style="width: 800px; max-height:90vh;">
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:15px;">
+                        <div>
+                            <h3 id="marks-modal-title">Update Marks</h3>
+                            <p id="marks-modal-sub" style="font-size:12px; color:#666;">Course Name | Date</p>
+                        </div>
+                        <button onclick="document.getElementById('cen-modal-marks').style.display='none'" style="border:none; background:none; font-size:20px; cursor:pointer;">&times;</button>
+                    </div>
+
+                    <div style="background:#fff7ed; color:#9a3412; padding:10px; font-size:12px; border-radius:4px; margin-bottom:15px;">
+                        <i class="fas fa-info-circle"></i> Enter 'AB' for Absent students. Marks will be saved automatically upon clicking Save.
+                    </div>
+
+                    <div style="border:1px solid #eee; border-radius:6px; overflow:hidden;">
+                        <div class="marks-sheet-header">
+                            <div>Student Name</div>
+                            <div style="text-align:center;">Roll No</div>
+                            <div style="text-align:center;">Status</div>
+                            <div style="text-align:center;">Marks Obtained</div>
+                        </div>
+                        <div id="marks-sheet-body" style="max-height: 400px; overflow-y: auto;"></div>
+                    </div>
+
+                    <div style="text-align:right; margin-top:20px;">
+                        <input type="hidden" id="current-exam-id">
+                        <button class="btn btn-red" onclick="document.getElementById('cen-modal-marks').style.display='none'">Close</button>
+                        <button class="btn btn-green" onclick="cenSaveExamMarks()">Save & Publish</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-view-batches" class="cen-view" style="display:none;">
+                <div class="cen-table-container" style="background:transparent; box-shadow:none; padding:0;">
+                    <div style="background:white; padding:20px; border-radius:10px; box-shadow:0 2px 4px rgba(0,0,0,0.05); display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h3 style="margin:0;">Batch Management</h3>
+                            <p style="margin:5px 0 0; font-size:13px; color:#666;">Create classes and assign students</p>
+                        </div>
+                        <button class="btn btn-blue" onclick="document.getElementById('cen-modal-batch').style.display='flex'">
+                            <i class="fas fa-plus-circle"></i> Create New Batch
+                        </button>
+                    </div>
+
+                    <div id="batch-empty-msg" style="display:none; text-align:center; padding:50px; color:#999;">
+                        <i class="fas fa-layer-group fa-3x" style="margin-bottom:15px; opacity:0.3;"></i>
+                        <p>No batches found. Create one to get started.</p>
+                    </div>
+
+                    <div id="cen-batch-grid" class="batch-grid"></div>
+                </div>
+            </div>
+
+            <div id="cen-modal-batch" class="cen-modal" style="display:none;">
+                <div class="cen-modal-content" style="width:400px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                        <h3>Create Batch</h3>
+                        <button onclick="document.getElementById('cen-modal-batch').style.display='none'" style="border:none; background:none; font-size:20px;">&times;</button>
+                    </div>
+                    <div class="cen-form-group">
+                        <label>Batch Name (e.g. MWF Morning)</label>
+                        <input type="text" id="new-batch-name" class="cen-input" placeholder="Enter name">
+                    </div>
+                    <div class="cen-form-group">
+                        <label>Time Slot</label>
+                        <input type="time" id="new-batch-time" class="cen-input">
+                    </div>
+                    <div class="cen-form-group">
+                        <label>Course Focus (Optional)</label>
+                        <input type="text" id="new-batch-course" class="cen-input" placeholder="e.g. ADCA Only">
+                    </div>
+                    <div style="text-align:right; margin-top:20px;">
+                        <button class="btn btn-green" style="width:100%;" onclick="cenCreateBatch()">Create Batch</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-modal-allot" class="cen-modal" style="display:none;">
+                <div class="cen-modal-content" style="width:600px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <h3 id="allot-modal-title" style="margin:0;">Assign Students</h3>
+                        <button onclick="document.getElementById('cen-modal-allot').style.display='none'" style="border:none; background:none; font-size:24px;">&times;</button>
+                    </div>
+                    <p id="allot-subtitle" style="color:#666; font-size:13px; margin-bottom:15px;"></p>
+                    <input type="text" id="allot-search" class="cen-input" placeholder="Search student by name..." onkeyup="cenFilterAllotList()">
+                    <input type="hidden" id="current-batch-id">
+                    <div class="allot-list" id="allot-container"></div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:15px; border-top:1px solid #eee;">
+                        <span style="font-size:12px; color:#666;" id="allot-count-select">0 Selected</span>
+                        <button class="btn btn-blue" onclick="cenSaveAllotment()">Save Assignments</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-view-attendance" class="cen-view" style="display:none;">
+                <div class="cen-table-container" style="background: transparent; box-shadow: none; padding: 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 01px;">
+                        <div>
+                            <h3 style="margin:0;">Live Attendance Console</h3>
+                            <p style="margin:5px 0 0; color:#666; font-size:13px;">Date: <span id="att-current-date"></span></p>
+                        </div>
+                        <div style="display:flex;">
+                            <input type="text" id="manual-att-roll" class="manual-att-input" placeholder="Enter Roll No manually...">
+                            <button class="manual-att-btn" onclick="cenManualAttendance()">Mark Present</button>
+                        </div>
+                    </div>
+
+                    <div class="att-layout">
+                        <div class="att-qr-card">
+                            <div class="att-timer" id="att-clock">00:00:00</div>
+                            <p style="color:#64748b; font-size:13px;">Project this QR on a Screen</p>
+                            <div class="att-qr-box">
+                                <div id="cen-qr-code"></div>
+                            </div>
+                            <h4 style="margin:10px 0 5px; color:var(--cen-primary);">Scan to Mark Present</h4>
+                            <p style="font-size:12px; color:#666; max-width:80%;">Students must log in to their dashboard and scan this code to mark attendance automatically.</p>
+                            <button class="btn btn-blue" style="margin-top:20px; width:100%;" onclick="window.print()">
+                                <i class="fas fa-print"></i> Print QR Poster
+                            </button>
+                        </div>
+
+                        <div class="att-panel">
+                            <div class="att-stats-row">
+                                <div class="att-stat-card">
+                                    <div class="att-icon-box att-blue"><i class="fas fa-users"></i></div>
+                                    <div class="att-stat-info">
+                                        <h4 id="att-stat-total">0</h4>
+                                        <p>Total Strength</p>
+                                    </div>
+                                </div>
+                                <div class="att-stat-card">
+                                    <div class="att-icon-box att-green"><i class="fas fa-user-check"></i></div>
+                                    <div class="att-stat-info">
+                                        <h4 id="att-stat-present">0</h4>
+                                        <p>Present Today</p>
+                                    </div>
+                                </div>
+                                <div class="att-stat-card">
+                                    <div class="att-icon-box att-red"><i class="fas fa-user-times"></i></div>
+                                    <div class="att-stat-info">
+                                        <h4 id="att-stat-absent">0</h4>
+                                        <p>Absent</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="att-log-container">
+                                <div class="att-log-header">
+                                    <h4 style="margin:0; font-size:15px; color:#334155;">Today's Live Log</h4>
+                                    <button class="action-btn text-blue" onclick="cenGenerateQR()"><i class="fas fa-sync-alt"></i> Refresh List</button>
+                                </div>
+                                <div class="att-log-body" id="att-log-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-view-payments" class="cen-view" style="display:none;">
+                <div class="cen-table-container" style="background:transparent; box-shadow:none; padding:0;">
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="margin:0; color:#1e293b;">Accounts & Finance</h3>
+                        <p style="margin:5px 0 0; color:#666; font-size:13px;">Manage student fees and view Head Office transfer details.</p>
+                    </div>
+
+                    <div class="pay-layout">
+                        <div class="pay-action-card">
+                            <div class="sa-qr-box">
+                                <div class="sa-qr-title">Head Office Account</div>
+                                <div id="sa-static-qr" style="display:inline-block; padding:10px; background:white;"></div>
+                                <div class="sa-qr-desc">Scan to Transfer Collected Fees via UPI</div>
+                                <div style="font-size:11px; color:#ef4444; font-weight:bold; margin-top:5px;">Admin UPI: lifeway@upi</div>
+                            </div>
+                            <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+                            <div class="pay-form-title"><i class="fas fa-cash-register"></i> Collect Student Fee</div>
+                            <div class="pay-input-group">
+                                <i class="fas fa-id-card pay-input-icon"></i>
+                                <input type="text" id="pay-roll" class="pay-input" placeholder="Enter Roll Number">
+                            </div>
+                            <div class="pay-input-group">
+                                <i class="fas fa-rupee-sign pay-input-icon"></i>
+                                <input type="number" id="pay-amount" class="pay-input" placeholder="Amount Received">
+                            </div>
+                            <div class="pay-input-group">
+                                <i class="fas fa-tag pay-input-icon"></i>
+                                <select id="pay-type" class="pay-input">
+                                    <option value="Tuition Fee">Tuition Fee</option>
+                                    <option value="Exam Fee">Exam Fee</option>
+                                    <option value="Registration">Registration Fee</option>
+                                    <option value="Fine/Other">Fine / Other</option>
+                                </select>
+                            </div>
+                            <div class="pay-input-group">
+                                <i class="fas fa-wallet pay-input-icon"></i>
+                                <select id="pay-mode" class="pay-input">
+                                    <option value="Cash">Cash</option>
+                                    <option value="Online">Online / UPI</option>
+                                    <option value="Cheque">Cheque</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-green" style="width:100%; padding:12px; font-size:14px;" onclick="cenCollectFee()">
+                                <i class="fas fa-check-circle"></i> Record Payment
+                            </button>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="pay-stats-grid">
+                                <div class="pay-stat-card" style="border-left:4px solid #10b981;">
+                                    <div>
+                                        <div class="pay-stat-val" style="color:#10b981">₹<span id="stat-pay-today">0</span></div>
+                                        <div class="pay-stat-label">Collected Today</div>
+                                    </div>
+                                    <i class="fas fa-calendar-day pay-stat-icon" style="color:#10b981"></i>
+                                </div>
+                                <div class="pay-stat-card" style="border-left:4px solid #2563eb;">
+                                    <div>
+                                        <div class="pay-stat-val" style="color:#2563eb">₹<span id="stat-pay-total">0</span></div>
+                                        <div class="pay-stat-label">Total Revenue</div>
+                                    </div>
+                                    <i class="fas fa-wallet pay-stat-icon" style="color:#2563eb"></i>
+                                </div>
+                                <div class="pay-stat-card" style="border-left:4px solid #ef4444;">
+                                    <div>
+                                        <div class="pay-stat-val" style="color:#ef4444">₹<span id="stat-pay-due">0</span></div>
+                                        <div class="pay-stat-label">Total Dues</div>
+                                    </div>
+                                    <i class="fas fa-exclamation-circle pay-stat-icon" style="color:#ef4444"></i>
+                                </div>
+                            </div>
+
+                            <div class="cen-table-container" style="flex:1;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                    <h4>Transaction History</h4>
+                                    <button class="action-btn text-blue" onclick="window.print()"><i class="fas fa-print"></i> Print Report</button>
+                                </div>
+                                <table class="cen-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Student</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Mode</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pay-history-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cen-view-users" class="cen-view" style="display: none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <div>
+                        <h3 style="margin:0; color:#1e293b;">Staff Management</h3>
+                        <p style="margin:5px 0 0; font-size:13px; color:#64748b;">Manage center users, teachers, and permissions.</p>
+                    </div>
+                    <button class="btn btn-blue" onclick="cenOpenStaffModal()">
+                        <i class="fas fa-user-plus"></i> Add New Staff
+                    </button>
+                </div>
+
+                <div class="cen-table-container">
+                    <table class="cen-table">
+                        <thead>
+                            <tr>
+                                <th>Profile</th>
+                                <th>Name & Role</th>
+                                <th>Contact Info</th>
+                                <th>Joining Date</th>
+                                <th>Username</th>
+                                <th>Status</th>
+                                <th style="text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cen-staff-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="cen-modal-staff" class="cen-modal" style="display:none;">
+                <div class="cen-modal-content" style="width: 700px;">
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:15px;">
+                        <h3 id="staff-modal-title">Add New Staff Member</h3>
+                        <button onclick="document.getElementById('cen-modal-staff').style.display='none'" style="border:none; background:none; font-size:18px; cursor:pointer;">&times;</button>
+                    </div>
+
+                    <form onsubmit="cenSaveStaff(event)">
+                        <input type="hidden" id="staff-edit-id">
+                        <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px; background:#f8fafc; padding:15px; border-radius:8px;">
+                            <div style="width:80px; height:80px; background:#e2e8f0; border-radius:50%; overflow:hidden; flex-shrink:0;">
+                                <img id="staff-preview-img" src="https://via.placeholder.com/150" style="width:100%; height:100%; object-fit:cover;">
+                            </div>
+                            <div style="flex:1;">
+                                <label style="font-size:13px; font-weight:600;">Profile Photo</label>
+                                <input type="file" id="staff-photo-input" class="cen-input" accept="image/*" onchange="previewStaffPhoto(this)">
+                                <p style="font-size:11px; color:#666; margin-top:5px;">Recommended: Square JPG/PNG image</p>
+                            </div>
+                        </div>
+
+                        <div class="cen-form-grid">
+                            <div class="cen-form-group">
+                                <label>Full Name <span style="color:red">*</span></label>
+                                <input type="text" id="staff-name" class="cen-input" required placeholder="e.g. John Doe">
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Role / Designation <span style="color:red">*</span></label>
+                                <select id="staff-role" class="cen-input">
+                                    <option value="Teacher">Teacher / Faculty</option>
+                                    <option value="Receptionist">Receptionist</option>
+                                    <option value="Admin">Center Admin</option>
+                                </select>
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Mobile Number</label>
+                                <input type="number" id="staff-mobile" class="cen-input" placeholder="10-digit number">
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="staff-email" class="cen-input" placeholder="staff@example.com">
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Date of Joining</label>
+                                <input type="date" id="staff-doj" class="cen-input">
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Salary (Optional)</label>
+                                <input type="number" id="staff-salary" class="cen-input" placeholder="₹">
+                            </div>
+                            <div class="cen-form-header" style="grid-column: 1 / -1; margin-top:10px;">Login Access</div>
+                            <div class="cen-form-group">
+                                <label>Username</label>
+                                <input type="text" id="staff-user" class="cen-input" placeholder="Create username">
+                            </div>
+                            <div class="cen-form-group">
+                                <label>Password</label>
+                                <input type="text" id="staff-pass" class="cen-input" value="123456">
+                            </div>
+                        </div>
+
+                        <div style="text-align:right; margin-top:20px; padding-top:15px; border-top:1px solid #eee;">
+                            <button type="button" class="btn btn-red" onclick="document.getElementById('cen-modal-staff').style.display='none'">Cancel</button>
+                            <button type="submit" class="btn btn-green"><i class="fas fa-save"></i> Save Staff</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="cen-view-reports" class="cen-view" style="display: none;">
+                <div class="sa-card">
+                    <h3>Performance Report</h3>
+                    <table class="sa-table">
+                        <tr>
+                            <td>Total Students</td>
+                            <td id="rep-cen-total">0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Fees Collected</td>
+                            <td id="rep-cen-coll" style="color: green;">₹0</td>
+                        </tr>
+                        <tr>
+                            <td>Dues Pending</td>
+                            <td id="rep-cen-due" style="color: red;">₹0</td>
+                        </tr>
+                        <tr>
+                            <td>Certified Students</td>
+                            <td id="rep-cen-cert">0</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button class="btn btn-blue" onclick="window.print()">Print Report</button>
+                </div>
+            </div>
+
+            <div id="cen-view-profile" class="cen-view" style="display:none;">
+                <div class="sa-card" style="max-width:600px; margin:0 auto;">
+                    <h3 style="border-bottom:2px solid #eee; padding-bottom:10px; margin-bottom:20px; color:var(--primary);">Center Profile Management</h3>
+                    <div style="background:#f8f9fa; padding:15px; border-radius:8px; margin-bottom:20px; border-left:4px solid var(--accent);">
+                        <p style="margin:0; font-size:13px; color:#666;"><strong>Center Code:</strong> <span style="color:#333; font-weight:bold;" id="prof-code"></span></p>
+                        <p style="margin:5px 0 0; font-size:13px; color:#666;"><strong>Name:</strong> <span style="color:#333; font-weight:bold;" id="prof-name"></span></p>
+                    </div>
+                    <h4 style="color:#475569; margin-top:20px; margin-bottom:10px;">Change Password</h4>
+                    <div style="background:#fff3cd; border:1px solid #ffc107; padding:10px; border-radius:4px; margin-bottom:15px; font-size:12px;">
+                        <i class="fas fa-lock"></i> Update your login password below
+                    </div>
+                    <label>Current Password</label>
+                    <input type="password" id="prof-old-pass" class="cen-input" placeholder="Enter current password">
+                    <label>New Password</label>
+                    <input type="password" id="prof-new-pass" class="cen-input" placeholder="Enter new password (min 6 chars)">
+                    <label>Confirm Password</label>
+                    <input type="password" id="prof-confirm-pass" class="cen-input" placeholder="Re-enter new password">
+                    <button class="btn btn-green" style="width:100%; margin-top:15px;" onclick="cenUpdatePassword()">
+                        <i class="fas fa-check-circle"></i> Update Password
+                    </button>
+                    <hr style="margin:25px 0; border:0; border-top:1px dashed #ddd;">
+                    <h4 style="color:#475569; margin-bottom:10px;">Center Information</h4>
+                    <label>Director Name</label>
+                    <input type="text" id="prof-director" class="cen-input">
+                    <label>Location / City</label>
+                    <input type="text" id="prof-location" class="cen-input">
+                    <button class="btn btn-blue" style="width:100%; margin-top:15px;" onclick="cenSaveProfile()">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+
+            <div id="cen-view-certificates" class="cen-view" style="display:none;">
+                <div class="sa-header">
+                    <div>
+                        <h3>Certificate Management</h3>
+                        <p style="font-size:12px; color:#666;">Issue, Reprint, and Track Student Certificates</p>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 2fr; gap:20px;">
+                    <div class="sa-card" style="height:fit-content;">
+                        <h4 style="color:var(--primary); margin-bottom:15px; border-bottom:2px solid #eee; padding-bottom:10px;">Search Student</h4>
+                        <label>Student Roll Number</label>
+                        <input type="text" id="cert-search-roll" class="cen-input" placeholder="LF2025001">
+                        <button class="btn btn-blue" style="width:100%; margin-top:10px;" onclick="cenSearchCertStudent()">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                        <div id="cert-search-result" style="margin-top:15px; padding:15px; background:#f8f9fa; border-radius:6px; display:none;">
+                            <h5 id="cert-stud-name">--</h5>
+                            <p style="font-size:12px; color:#666; margin:3px 0;">Course: <span id="cert-stud-course">--</span></p>
+                            <p style="font-size:12px; color:#666; margin:3px 0;">Status: <span id="cert-stud-status">--</span></p>
+                        </div>
+                    </div>
+                    <div class="sa-card">
+                        <h4 style="color:var(--accent); margin-bottom:15px; border-bottom:2px solid #eee; padding-bottom:10px;">Certificate Actions</h4>
+                        <div id="cert-actions-area" style="background:#f0f9ff; padding:20px; border-radius:8px; text-align:center; color:#666;">
+                            <i class="fas fa-certificate fa-2x" style="color:#cbd5e1; margin-bottom:10px;"></i>
+                            <p>Search a student above to view certificate options</p>
+                        </div>
+                        <div id="cert-issue-panel" style="display:none; margin-top:15px;">
+                            <div style="background:#d4edda; border:1px solid #10b981; padding:12px; border-radius:6px; margin-bottom:15px;">
+                                <i class="fas fa-check-circle" style="color:#10b981;"></i> <span style="color:#155724;">Ready to issue</span>
+                            </div>
+                            <label>Certificate Type</label>
+                            <select id="cert-type" class="cen-input">
+                                <option value="Completion">Completion Certificate</option>
+                                <option value="Merit">Merit Certificate</option>
+                                <option value="Participation">Participation Certificate</option>
+                            </select>
+                            <label>Issue Date</label>
+                            <input type="date" id="cert-issue-date" class="cen-input">
+                            <button class="btn btn-green" style="width:100%; margin-top:10px;" onclick="cenIssueCertificate()">
+                                <i class="fas fa-print"></i> Issue Certificate
+                            </button>
+                        </div>
+                        <div id="cert-reprint-panel" style="display:none; margin-top:15px;">
+                            <div style="background:#fff3cd; border:1px solid #ffc107; padding:12px; border-radius:6px; margin-bottom:15px;">
+                                <i class="fas fa-redo" style="color:#ff9800;"></i> <span style="color:#856404;">Reprint Available</span>
+                            </div>
+                            <label>Reprint Fee (₹)</label>
+                            <input type="number" id="cert-reprint-fee" class="cen-input" value="500">
+                            <label>Payment Status</label>
+                            <select id="cert-payment-status" class="cen-input">
+                                <option value="Pending">Pending - Awaiting Super Admin Approval</option>
+                                <option value="Approved">Approved - Ready to Reprint</option>
+                            </select>
+                            <button class="btn btn-orange" style="width:100%; margin-top:10px;" onclick="cenRequestReprint()">
+                                <i class="fas fa-file-invoice"></i> Request Reprint
+                            </button>
+                        </div>
+                        <div id="cert-search-notissued" style="display:none; margin-top:15px;">
+                            <div style="background:#fee2e2; border:1px solid #ef4444; padding:12px; border-radius:6px;">
+                                <i class="fas fa-exclamation-circle" style="color:#dc2626;"></i> <span style="color:#991b1b;">No Certificate Issued Yet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sa-card" style="margin-top:30px;">
+                    <h4>Certificate Requests & Reprints</h4>
+                    <table class="sa-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Student Details</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Fee</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cert-requests-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="receipt-print-area" style="display:none;">
+                <div class="rec-container">
+                    <div class="rec-header">
+                        <div class="rec-title">Lifeway Computer Education</div>
+                        <div class="rec-subtitle">Fee Receipt / Invoice</div>
+                    </div>
+                    <div class="rec-meta">
+                        <div>
+                            <strong>Receipt No:</strong> <span id="rec-no"></span><br>
+                            <strong>Date:</strong> <span id="rec-date"></span>
+                        </div>
+                        <div style="text-align: right;">
+                            <strong>Student:</strong> <span id="rec-name"></span><br>
+                            <strong>Roll No:</strong> <span id="rec-roll"></span>
+                        </div>
+                    </div>
+                    <table class="rec-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Mode</th>
+                                <th style="text-align:right;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span id="rec-type"></span></td>
+                                <td><span id="rec-mode"></span></td>
+                                <td style="text-align:right;"><span id="rec-amt"></span></td>
+                            </tr>
+                            <tr style="height:100px;">
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align:right;">Total Paid</th>
+                                <th style="text-align:right;"><span id="rec-total"></span></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="rec-footer">
+                        <div class="rec-sign">Authorized Signatory</div>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> </div> 
+    
+    
+    
+<div id="page-team-login" class="page-section">
+    <div style="max-width: 400px; margin: 60px auto;" class="card">
+        <div style="text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">
+            <i class="fas fa-users-cog fa-3x" style="color: #555;"></i>
+            <h2 style="color: #333; margin-top: 10px;">Staff Portal</h2>
+            <p style="font-size: 12px; color: #777;">Authorized Personnel Only</p>
+        </div>
+
+        <label>Username</label>
+        <div style="position: relative; margin-bottom: 15px;">
+            <i class="fas fa-user" style="position: absolute; left: 10px; top: 12px; color: #999;"></i>
+            <input type="text" id="staff-user" placeholder="Enter Username" style="padding-left: 35px;">
+        </div>
+
+        <label>Password</label>
+        <div style="position: relative;">
+            <i class="fas fa-key" style="position: absolute; left: 10px; top: 12px; color: #999;"></i>
+            <input type="password" id="staff-pass" placeholder="Enter Password" style="padding-left: 35px;">
+        </div>
+
+        <button class="btn btn-blue" style="width: 100%; margin-top: 20px;" onclick="attemptStaffLogin()">
+            SECURE LOGIN
+        </button>
+    </div>
+    
+</div>
+    <div id="page-team-dashboard" class="page-section">
+        <div class="top-header" style="background: #333; padding: 15px;">
+            <span style="color: white; font-weight: bold;"><i class="fas fa-id-badge"></i> STAFF DASHBOARD</span>
+            <div>
+                <span id="staff-display-name" style="color: #ddd; margin-right: 15px; font-size: 13px;"></span>
+                <button class="btn btn-red" style="padding: 2px 8px; font-size: 11px;" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div style="max-width: 1000px; margin: 30px auto; padding: 0 20px;">
+            
+            <div class="admin-nav" id="staff-nav-container">
+                </div>
+
+            <div id="staff-view-attendance" class="staff-content" style="display: none;">
+                <div class="card" style="text-align: center;">
+                    <h3><i class="fas fa-qrcode"></i> Mark Attendance</h3>
+                    <p>Generate QR Code for Students to scan</p>
+                    <div id="staff-qr-display" style="border: 2px dashed #333; padding: 20px; display: inline-block; margin: 20px 0;"></div>
+                    <br>
+                    <button class="btn btn-green" onclick="staffGenerateQR()">Generate Today's QR</button>
+                </div>
+            </div>
+
+            <div id="staff-view-batches" class="staff-content" style="display: none;">
+                <div class="card">
+                    <h3><i class="fas fa-clock"></i> Batch Manager</h3>
+                    <div class="form-grid">
+                        <input type="text" id="staff-batch-name" placeholder="Batch Name">
+                        <input type="time" id="staff-batch-time">
+                        <select id="staff-batch-center"></select>
+                        <button class="btn btn-orange" onclick="staffAddBatch()">Create</button>
+                    </div>
+                    <h4 style="margin-top: 15px;">Created Batches</h4>
+                    <ul id="staff-batch-list" style="margin-top: 10px;"></ul>
+                </div>
+            </div>
+
+            <div id="staff-view-students" class="staff-content" style="display: none;">
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Student Directory (Read Only)</h3>
+                    <input type="text" placeholder="Search Student..." style="width: 100%; padding: 8px; margin-bottom: 10px;" onkeyup="staffSearchStudent(this.value)">
+                    <table class="sa-table">
+                        <thead><tr><th>Roll</th><th>Name</th><th>Course</th><th>Status</th></tr></thead>
+                        <tbody id="staff-student-list"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+            
+<div id="page-super-login" class="page-section">
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #000;">
+        
+        <div class="card" style="width: 100%; max-width: 400px; padding: 40px; border-radius: 10px; border-top: 5px solid gold;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <i class="fas fa-user-shield fa-4x" style="color: #333;"></i>
+                <h2 style="margin-top: 15px; color: #333;">SUPER ADMIN</h2>
+                <p style="font-size: 11px; color: #777; letter-spacing: 2px;">SECURE GATEWAY</p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="font-size: 12px; font-weight: bold; color: #555;">USERNAME</label>
+                <div style="position: relative;">
+                    <i class="fas fa-user" style="position: absolute; left: 15px; top: 12px; color: #aaa;"></i>
+                    <input type="text" id="sa-login-user" placeholder="Enter Username" style="padding-left: 40px; height: 45px; font-size: 14px; border: 1px solid #ddd; background: #f9f9f9;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <label style="font-size: 12px; font-weight: bold; color: #555;">PASSWORD</label>
+                <div style="position: relative;">
+                    <i class="fas fa-lock" style="position: absolute; left: 15px; top: 12px; color: #aaa;"></i>
+                    <input type="password" id="sa-login-pass" placeholder="Enter Password" style="padding-left: 40px; height: 45px; font-size: 14px; border: 1px solid #ddd; background: #f9f9f9;">
+                </div>
+            </div>
+
+            <button class="btn" style="width: 100%; padding: 12px; background: #000; color: gold; font-weight: bold; letter-spacing: 1px;" onclick="saLogin()">
+                AUTHENTICATE <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+            </button>
+
+            <div style="margin-top: 20px; text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
+                <a onclick="navigate('home')" style="font-size: 12px; color: #777; cursor: pointer;">
+                    <i class="fas fa-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div id="page-super-dashboard" class="page-section" style="padding: 0;">
+          <div class="sa-layout">
+              
+              <div class="sa-sidebar">
+                  <div class="sa-sidebar-header">
+                      <h3><i class="fas fa-shield-alt"></i> SUPER ADMIN</h3>
+                      <p style="font-size: 11px; color: #777; margin-top: 5px;">Control Panel v2.0</p>
+                  </div>
+                  <div class="sa-menu-item active" onclick="saTab('dashboard', this)"><i class="fas fa-th-large"></i> Dashboard</div>
+                  <div class="sa-menu-item" onclick="saTab('students', this)"><i class="fas fa-user-graduate"></i> Student Manager</div>
+                  <div class="sa-menu-item" onclick="saTab('academics', this)"><i class="fas fa-graduation-cap"></i> Courses & Semesters</div>
+                  <div class="sa-menu-item" onclick="saTab('docs', this)"><i class="fas fa-print"></i> Docs & Payments</div>
+                  <div class="sa-menu-item" onclick="saTab('centers', this)"><i class="fas fa-building"></i> Center Manager</div>
+                   <div class="sa-menu-item" onclick="saTab('batches', this)"><i class="fas fa-clock"></i> Batch Manager</div>
+                  <div class="sa-menu-item" onclick="saTab('notices', this)"><i class="fas fa-bullhorn"></i> Notice Board (Public)</div>
+                <div class="sa-menu-item" onclick="saTab('materials', this)"><i class="fas fa-book-reader"></i> Study Materials (Private)</div>
+                  <div class="sa-menu-item" onclick="saTab('website', this)"><i class="fas fa-globe"></i> Website Settings</div>
+                    <div class="sa-menu-item" onclick="saTab('team', this)"><i class="fas fa-users-cog"></i> Team Management</div>
+                    <div class="sa-menu-item" onclick="saTab('enquiries', this)"><i class="fas fa-headset"></i> Enquiry Manager</div>
+                    <div class="sa-menu-item" onclick="saTab('projects', this)">
+                    <i class="fas fa-briefcase"></i> Project Manager
+                    </div>
+                    <div class="sa-menu-item" onclick="saTab('suggestions', this)"><i class="fas fa-envelope-open-text"></i> Suggestions <span id="sa-sug-badge" class="badge bg-red" style="margin-left:auto; display:none;">0</span></div>
+                    <div class="sa-menu-item" onclick="saTab('gallery', this)">
+                        <i class="fas fa-images"></i> Gallery Manager
+                    </div>
+                  <div class="sa-menu-item" style="color: #ff6b6b;" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</div>
+              </div>
+
+
+             <div class="sa-main">
+                  
+                  <div id="sa-view-dashboard">
+                    <div class="sa-header" style="border-bottom: 2px solid #ddd; padding-bottom: 15px;">
+                    <div>
+                <h2 style="font-size: 24px; color: #333;"><i class="fas fa-chart-pie"></i> Executive Overview</h2>
+                <p style="font-size: 13px; color: #666;">Real-time institute performance metrics</p>
+                </div>
+                <div style="text-align: right;">
+             <span style="font-size: 12px; background: #333; color: white; padding: 5px 15px; border-radius: 20px;">
+                <i class="far fa-calendar-alt"></i> <span id="sa-date-display"></span>
+                </span>
+                </div>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; color: #555; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Financial Health</h4>
+                <div class="sa-stat-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                
+                <div class="sa-stat-box" style="border-left: 5px solid #2ecc71; position: relative;">
+                <i class="fas fa-wallet fa-2x" style="position: absolute; right: 20px; top: 20px; color: #2ecc71; opacity: 0.2;"></i>
+                <h2 id="sa-stat-earn" style="color: #27ae60;">₹0</h2>
+                <p>Total Revenue Collected</p>
+                <small style="color: #888; font-size: 10px;">Lifetime Earnings</small>
+                </div>
+
+                <div class="sa-stat-box" style="border-left: 5px solid #e74a3b; position: relative;">
+                <i class="fas fa-hand-holding-usd fa-2x" style="position: absolute; right: 20px; top: 20px; color: #e74a3b; opacity: 0.2;"></i>
+                <h2 id="sa-stat-dues" style="color: #e74a3b;">₹0</h2>
+                <p>Pending Fees (Dues)</p>
+                <small style="color: #888; font-size: 10px;">Uncollected Revenue</small>
+                </div>
+
+                <div class="sa-stat-box" style="border-left: 5px solid #f6c23e; position: relative;">
+                <i class="fas fa-cash-register fa-2x" style="position: absolute; right: 20px; top: 20px; color: #f6c23e; opacity: 0.2;"></i>
+                <h2 id="sa-stat-today" style="color: #f6c23e;">₹0</h2>
+                <p>Collected Today</p>
+                <small style="color: green; font-size: 10px;"><i class="fas fa-arrow-up"></i> Live Updates</small>
+                </div>
+
+                <div class="sa-stat-box" style="border-left: 5px solid #4e73df; position: relative;">
+                <i class="fas fa-university fa-2x" style="position: absolute; right: 20px; top: 20px; color: #4e73df; opacity: 0.2;"></i>
+                <h2 id="sa-stat-value" style="color: #4e73df;">₹0</h2>
+                <p>Projected Value</p>
+                <small style="color: #888; font-size: 10px;">(Collected + Dues)</small>
+                </div>
+                </div>
+
+                <h4 style="margin: 30px 0 10px; color: #555; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Network Metrics</h4>
+                <div class="sa-stat-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            
+                <div class="sa-stat-box">
+                    <h3 id="sa-stat-students">0</h3>
+                    <p>Total Students</p>
+                    <div style="background: #eee; height: 5px; width: 100%; margin-top: 5px; border-radius: 5px;">
+                        <div style="background: #4e73df; width: 100%; height: 100%; border-radius: 5px;"></div>
+                    </div>
+                </div>
+
+                <div class="sa-stat-box">
+                    <h3 id="sa-stat-active">0</h3>
+                    <p>Active Centers</p>
+                    <small id="sa-top-center" style="font-size: 10px; color: green;">Top: N/A</small>
+                </div>
+
+                <div class="sa-stat-box">
+                <h3 id="sa-stat-req">0</h3>
+                <p>Pending Approvals</p>
+                <small style="color: orange; font-weight: bold;">Action Required</small>
+                </div>
+
+                <div class="sa-stat-box">
+                    <h3 id="sa-stat-courses">0</h3>
+                    <p>Courses Offered</p>
+                    <small id="sa-pop-course" style="font-size: 10px; color: #666;">Most Popular: N/A</small>
+                </div>
+                </div>
+        
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 30px;">
+                
+                <div class="sa-card">
+                <h3><i class="fas fa-book"></i> Course-wise Enrollment</h3>
+                <table class="sa-table" style="margin-top: 15px;">
+                    <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Students</th>
+                        <th>Revenue Share</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody id="sa-course-stats-body">
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="sa-card">
+                <h3><i class="fas fa-history"></i> Recent Payments</h3>
+                <ul id="sa-recent-payments" style="list-style: none; padding: 0; margin-top: 10px;">
+                        </ul>
+                </div>
+                    </div>
+                </div>
+
+                <div id="sa-view-students" style="display: none;">
+    
+        <div class="sa-header">
+        <div>
+            <h2>Student Management Hub</h2>
+            <p style="font-size: 12px; color: #666;">Manage Admissions, Marks, and Certification</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-blue" onclick="saShowStudentTab('all')"><i class="fas fa-users"></i> All Students</button>
+            <button class="btn btn-orange" onclick="saShowStudentTab('requested')"><i class="fas fa-certificate"></i> Cert. Requests</button>
+            <button class="btn btn-green" onclick="toggleSaForm('sa-std-form')"><i class="fas fa-user-plus"></i> New Admission</button>
+        </div>
+        </div>
+
+     <div id="sa-std-form" class="sa-card" style="display: none; background: #f8f9fc; border-left: 5px solid var(--primary);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h4><i class="fas fa-edit"></i> Full Student Registration Form</h4>
+            <button class="btn btn-red" style="font-size: 10px;" onclick="toggleSaForm('sa-std-form')">Close</button>
+        </div>
+        
+        <div class="form-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <div style="grid-column: span 3; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 10px;">Personal Information</div>
+            <input type="text" id="sa-reg-name" placeholder="Student Full Name" required>
+            <input type="text" id="sa-reg-father" placeholder="Father's Name" required>
+            <input type="text" id="sa-reg-mother" placeholder="Mother's Name">
+            
+            <input type="date" id="sa-reg-dob" title="Date of Birth">
+            <select id="sa-reg-gender">
+                <option value="">Select Gender</option>
+                <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+            <select id="sa-reg-category">
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC/ST">SC/ST</option>
+            </select>
+
+            <div style="grid-column: span 3; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 10px;">Academic & Contact</div>
+            <input type="text" id="sa-reg-mobile" placeholder="Mobile Number" maxlength="10">
+            <input type="text" id="sa-reg-qual" placeholder="Previous Qualification (e.g. 12th Pass)">
+            <input type="text" id="sa-reg-address" placeholder="Full Address" style="grid-column: span 1;">
+            
+            <div style="grid-column: span 3; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 10px;">Course Allocation</div>
+            <select id="sa-reg-course" onchange="saLoadSemesters(this.value)"></select>
+            <select id="sa-reg-sem"><option value="1">Semester 1</option></select>
+            <input type="text" id="sa-reg-center" placeholder="Center Code (e.g. DL-01)">
+            
+            <div style="grid-column: span 3; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 10px;">System Access</div>
+            <input type="text" id="sa-reg-roll" placeholder="Roll No (Leave empty to Auto-Generate)">
+            <input type="text" id="sa-reg-pass" value="12345" placeholder="Set Password">
+        </div>
+
+        <button class="btn btn-green" style="margin-top: 20px; width: 100%; padding: 12px;" onclick="saRegisterStudent()">
+            <i class="fas fa-save"></i> REGISTER STUDENT
+        </button>
+            </div>
+
+        <div class="sa-card">
+        <h3 id="sa-std-table-title">All Active Students</h3>
+        <input type="text" id="sa-std-search" placeholder="Search by Name or Roll No..." style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd;" onkeyup="saSearchStudent()">
+        
+        <table class="sa-table">
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Details</th>
+                    <th>Course/Sem</th>
+                    <th>Cert. Status</th>
+                    <th>Marks Manager</th>
+                    <th>Issue Docs</th>
+                </tr>
+            </thead>
+            <tbody id="sa-std-table"></tbody>
+        </table>
+            </div>
+
+            <div id="sa-marks-modal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 25px; width: 500px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between;">
+                <h3>Manage Marks</h3>
+                <button onclick="document.getElementById('sa-marks-modal').style.display='none'" style="border:none; background:none; font-size:20px;">&times;</button>
+            </div>
+            <p id="sa-marks-student-info" style="color: #666; font-size: 13px; margin-bottom: 15px;"></p>
+            
+            <div id="sa-marks-container" style="max-height: 300px; overflow-y: auto;">
+                </div>
+
+            <div style="margin-top: 15px; text-align: right;">
+                <button class="btn btn-blue" onclick="saSaveMarks()">Save Marks</button>
+            </div>
+        </div>
+        </div>
+
+        </div>
+      <div id="sa-view-academics" style="display: none;">
+        <div class="ac-layout">
+        
+        <div class="ac-list-panel">
+            <div class="ac-list-header">
+                <h4 style="margin:0;">All Courses</h4>
+                <button class="btn btn-blue" style="font-size: 10px; padding: 5px 10px;" onclick="saInitNewCourse()">+ New</button>
+            </div>
+            <div id="ac-course-list" class="ac-list-container">
+                </div>
+        </div>
+
+        <div id="ac-editor" class="ac-editor-panel">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 20px;">
+                <h3 id="ac-editor-title" style="margin:0; color: var(--primary);">Create / Edit Course</h3>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-red" id="btn-delete-course" onclick="saDeleteCurrentCourse()" style="display:none;">Delete</button>
+                    <button class="btn btn-green" onclick="saSaveCourseData()">Save Changes</button>
+                </div>
+            </div>
+
+            <h4 style="font-size: 13px; color: #555; border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 15px;">Basic Information</h4>
+            <div class="form-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <input type="hidden" id="ac-course-id"> <div>
+                    <label>Course Name</label>
+                    <input type="text" id="ac-name" placeholder="e.g. Bachelor of Computer Applications">
+                </div>
+                
+                <div>
+                    <label>Duration</label>
+                    <select id="ac-sems" onchange="saGenerateSemesterInputs(this.value)">
+                        <option value="1">1 Sem (6 Mo)</option>
+                        <option value="2">2 Sems (1 Yr)</option>
+                        <option value="4">4 Sems (2 Yrs)</option>
+                        <option value="6">6 Sems (3 Yrs)</option>
+                        <option value="8">8 Sems (4 Yrs)</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 10px;">
+                <label>Course Description (Website Display)</label>
+                <textarea id="ac-desc" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" rows="2" placeholder="Brief description for the landing page..."></textarea>
+            </div>
+
+            <h4 style="font-size: 13px; color: #555; border-left: 3px solid var(--primary); padding-left: 10px; margin-top: 25px; margin-bottom: 15px;">Semester-wise Syllabus & Content</h4>
+            <div id="ac-sem-container" class="sem-grid">
+                <div style="grid-column: span 2; text-align: center; color: #999; padding: 20px; border: 2px dashed #eee;">
+                    Select Duration to Generate Semester Inputs
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="ac-empty-state" class="ac-editor-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <i class="fas fa-book-open fa-4x" style="color: #eee; margin-bottom: 20px;"></i>
+            <h3 style="color: #aaa;">Select a course to edit<br>or create a new one.</h3>
+        </div>
+
+                </div>
+            </div>
+        <div id="sa-view-docs" style="display: none;">
+        <div class="sa-card" style="padding-bottom: 0;">
+        <div class="dp-header">
+            <div class="dp-tab active" onclick="saSwitchDocTab('documents', this)"><i class="fas fa-file-alt"></i> Documents Manager</div>
+            <div class="dp-tab" onclick="saSwitchDocTab('payments', this)"><i class="fas fa-rupee-sign"></i> Fee & Payments</div>
+        </div>
+        <div id="sa-view-docs" style="display: none;">
+    
+     <div class="sa-card" style="padding-bottom: 0;">
+        <div class="dp-header">
+            <div class="dp-tab active" onclick="saSwitchDocTab('issue', this)">Issue Documents</div>
+            <div class="dp-tab" onclick="saSwitchDocTab('templates', this)">Template Settings</div>
+        </div>
+        </div>
+
+        <div id="dp-view-issue">
+        <div class="sa-card">
+            <h3>Issue Certificates & IDs</h3>
+            <input type="text" id="doc-search" placeholder="Search Student..." class="cen-input" onkeyup="saRenderDocTable()">
+            <table class="sa-table">
+                <thead><tr><th>Student</th><th>Course</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="sa-doc-list-body"></tbody>
+            </table>
+        </div>
+        </div>
+
+        <div id="dp-view-templates" style="display: none;">
+            
+        <div class="sa-card">
+            <h3 style="color: var(--primary);">Certificate Template Configuration</h3>
+            <div class="sa-grid-2">
+                <div>
+                    <label>Background Image URL</label>
+                    <input type="text" id="set-cert-bg" class="cen-input" placeholder="http://...">
+                    
+                    <label>Student Name Position (Left % / Top %)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="set-cert-name-x" class="cen-input" placeholder="X %">
+                        <input type="number" id="set-cert-name-y" class="cen-input" placeholder="Y %">
+                    </div>
+
+                    <label>Course Name Position</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="set-cert-course-x" class="cen-input">
+                        <input type="number" id="set-cert-course-y" class="cen-input">
+                    </div>
+
+                    <button class="btn btn-green" style="margin-top: 15px;" onclick="saSaveSettings()">Save Settings</button>
+                </div>
+                
+                <div style="border: 1px solid #ccc; height: 250px; position: relative; overflow: hidden; background: #eee;">
+                    <img id="prev-cert-bg" src="" style="width: 100%; height: 100%; object-fit: contain;">
+                    <div id="prev-cert-name" style="position: absolute; color: red; font-weight: bold; transform: translate(-50%, -50%);">STUDENT NAME</div>
+                    <div id="prev-cert-course" style="position: absolute; color: blue; font-weight: bold; transform: translate(-50%, -50%);">COURSE NAME</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sa-card">
+            <h3 style="color: var(--accent);">ID Card Template Configuration</h3>
+            <div class="sa-grid-2">
+                <div>
+                    <label>Background Image URL</label>
+                    <input type="text" id="set-id-bg" class="cen-input">
+                    
+                    <label>Name Position</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="set-id-name-x" class="cen-input">
+                        <input type="number" id="set-id-name-y" class="cen-input">
+                    </div>
+                    
+                    <button class="btn btn-green" style="margin-top: 15px;" onclick="saSaveSettings()">Save Settings</button>
+                </div>
+                
+                <div style="border: 1px solid #ccc; height: 200px; width: 320px; position: relative; overflow: hidden; background: #eee;">
+                    <img id="prev-id-bg" src="" style="width: 100%; height: 100%; object-fit: contain;">
+                    <div id="prev-id-name" style="position: absolute; color: red; font-weight: bold; transform: translate(-50%, -50%);">STUDENT NAME</div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+        <div style="position: fixed; left: -10000px; top: 0;">
+    
+        <div id="gen-cert" style="position: relative; width: 1123px; height: 794px; background: #fff; color: #000; font-family: 'Times New Roman', serif;">
+        <img id="gen-cert-bg" src="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+        
+        <div id="gen-cert-name" style="position: absolute; font-size: 36px; font-weight: bold; transform: translate(-50%, -50%); white-space: nowrap;"></div>
+        <div id="gen-cert-course" style="position: absolute; font-size: 24px; transform: translate(-50%, -50%); white-space: nowrap;"></div>
+        <div id="gen-cert-date" style="position: absolute; bottom: 50px; left: 100px; font-size: 18px;"></div>
+            </div>
+
+        <div id="gen-id" style="position: relative; width: 350px; height: 220px; background: #fff; font-family: Arial, sans-serif; overflow: hidden; border-radius: 10px;">
+        <img id="gen-id-bg" src="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+        
+        <img id="gen-id-photo" src="" style="position: absolute; width: 80px; height: 80px; top: 50px; left: 20px; border: 2px solid white; object-fit: cover;">
+        <div id="gen-id-name" style="position: absolute; font-size: 14px; font-weight: bold; color: #fff; transform: translate(-50%, -50%); text-align: center;"></div>
+        <div id="gen-id-roll" style="position: absolute; font-size: 10px; color: #fff; bottom: 20px; left: 20px;"></div>
+            </div>
+
+        </div>
+        
+        <div style="padding-bottom: 20px;">
+            <input type="text" id="sa-dp-search" placeholder="Search by Student Name or Roll No..." style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px;" onkeyup="saSearchDP()">
+        </div>
+        </div>
+
+        <div id="dp-view-documents">
+        <div class="sa-card">
+            <h3><i class="fas fa-print"></i> Issue Documents</h3>
+            <table class="sa-table">
+                <thead>
+                    <tr>
+                        <th>Student Details</th>
+                        <th>Academic Status</th>
+                        <th>Admit Card</th>
+                        <th>ID Card</th>
+                        <th>Marksheet</th>
+                        <th>Certificate</th>
+                    </tr>
+                </thead>
+                <tbody id="sa-doc-list-body">
+                    </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div id="dp-view-payments" style="display: none;">
+        
+        <div class="sa-card" style="background: #f8fff9; border: 1px dashed #2ecc71;">
+            <h4 style="color: #27ae60; margin-bottom: 10px;"><i class="fas fa-plus-circle"></i> Record New Fee Payment</h4>
+            <div class="form-grid" style="grid-template-columns: 1fr 1fr 1fr auto;">
+                <input type="text" id="pay-input-roll" placeholder="Enter Roll No (e.g. LF2025...)">
+                <input type="number" id="pay-input-amt" placeholder="Amount (₹)">
+                <select id="pay-input-type">
+                    <option>Tuition Fee</option>
+                    <option>Exam Fee</option>
+                    <option>Registration Fee</option>
+                    <option>Fine / Other</option>
+                </select>
+                <button class="btn btn-green" onclick="saRecordPayment()">Record Payment</button>
+            </div>
+        </div>
+
+        <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+            <div class="sa-stat-box" style="border-left-color: #2ecc71; padding: 15px;">
+                <h3 id="dp-total-coll" style="color: #2ecc71; font-size: 20px;">₹0</h3>
+                <p>Total Collected</p>
+            </div>
+            <div class="sa-stat-box" style="border-left-color: #e74a3b; padding: 15px;">
+                <h3 id="dp-total-due" style="color: #e74a3b; font-size: 20px;">₹0</h3>
+                <p>Total Pending Dues</p>
+            </div>
+        </div>
+
+        <div class="sa-card">
+            <h3>Transaction History</h3>
+            <table class="sa-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Student</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Receipt</th>
+                    </tr>
+                </thead>
+                <tbody id="sa-pay-history-body"></tbody>
+            </table>
+        </div>
+            </div>
+
+        </div>
+
+        <div id="sa-view-centers" style="display: none;">
+    
+        <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+        
+        <div class="sa-card" style="height: fit-content;">
+                <h3 id="cen-form-title" style="color: var(--primary); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 15px;">+ Add New Franchise</h3>
+                
+                <input type="hidden" id="cen-edit-index">
+
+                <label>Select State (Prefix)</label>
+                <select id="input-cen-state" onchange="saGenerateNextCode()">
+                    <option value="">-- Select State --</option>
+                    <option value="DL">Delhi (DL)</option>
+                    <option value="UP">Uttar Pradesh (UP)</option>
+                    <option value="HR">Haryana (HR)</option>
+                    <option value="PB">Punjab (PB)</option>
+                    <option value="BH">Bihar (BH)</option>
+                    <option value="RJ">Rajasthan (RJ)</option>
+                    <option value="MP">Madhya Pradesh (MP)</option>
+                </select>
+
+                <label>Center Code (Auto-Generated)</label>
+                <input type="text" id="input-cen-code" placeholder="Select State first..." readonly style="background: #e9ecef; font-weight: bold; color: #333; cursor: not-allowed;">
+                
+                <label>Center Name</label>
+                <input type="text" id="input-cen-name" placeholder="e.g. Lifeway Branch">
+                
+                <label>Password</label>
+                <input type="text" id="input-cen-pass" placeholder="Login Password">
+                
+                <label>Director Name</label>
+                <input type="text" id="input-cen-director" placeholder="Owner Name">
+                
+                <label>Location / City</label>
+                <input type="text" id="input-cen-loc" placeholder="City">
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="btn btn-blue" style="flex: 1;" onclick="saSaveCenter()">Save Center</button>
+                    <button class="btn btn-red" id="cen-cancel-btn" style="display: none;" onclick="saResetCenterForm()">Cancel</button>
+                </div>
+            </div>
+        <div class="sa-card">
+            <h3>Active Franchises</h3>
+            <div style="overflow-x: auto;">
+                <table class="sa-table">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Details</th>
+                            <th>Password</th>
+                            <th>Students</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sa-center-list"></tbody>
+                </table>
+            </div>
+        </div>
+            </div>
+        </div>
+         <div id="sa-view-batches" style="display: none;">
+    
+        <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+        
+        <div class="sa-card" style="height: fit-content;">
+            <h3 id="batch-form-title" style="color: var(--accent); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 15px;">+ Add New Batch</h3>
+            
+            <input type="hidden" id="batch-edit-id"> <label>Batch Name</label>
+            <input type="text" id="batch-name" placeholder="e.g. Morning MWF">
+            
+            <label>Timing</label>
+            <input type="time" id="batch-time">
+            
+            <label>Assign to Center</label>
+            <select id="batch-center-select">
+                <option value="">Select Center</option>
+            </select>
+
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="btn btn-orange" style="flex: 1;" onclick="saSaveBatch()">Save Batch</button>
+                <button class="btn btn-red" id="batch-cancel-btn" style="display: none;" onclick="saResetBatchForm()">Cancel</button>
+            </div>
+        </div>
+
+        <div class="sa-card">
+            <h3>Scheduled Batches</h3>
+            <div style="overflow-x: auto;">
+                <table class="sa-table">
+                    <thead>
+                        <tr>
+                            <th>Batch Name</th>
+                            <th>Time</th>
+                            <th>Center</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sa-batch-list"></tbody>
+                </table>
+            </div>
+        </div>
+            </div>
+            <div id="sa-batch-modal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+            <div class="sa-card" style="width: 500px; max-height: 80vh; display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+            <h3 id="alloc-title" style="margin:0;">Assign Students</h3>
+            <button onclick="document.getElementById('sa-batch-modal').style.display='none'" style="border:none; background:none; font-size: 20px;">&times;</button>
+        </div>
+        
+        <p style="font-size: 12px; color: #666; margin-bottom: 10px;">Select students to add to this batch:</p>
+        
+        <div id="alloc-student-list" style="overflow-y: auto; flex: 1; border: 1px solid #eee; padding: 10px; border-radius: 4px;">
+            </div>
+
+        <div style="margin-top: 15px; text-align: right;">
+            <input type="hidden" id="alloc-batch-id">
+            <button class="btn btn-green" onclick="saSaveBatchAllocation()">Update Batch List</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+        <div id="sa-view-notices" style="display: none;">
+            <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+                
+                <div class="sa-card" style="height: fit-content;">
+                    <h3 style="color: var(--accent); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 15px;">+ Post New Notice</h3>
+                    
+                    <label>Notice Title</label>
+                    <input type="text" id="not-title" placeholder="e.g. Exam Dates Announced">
+                    
+                    <label>Date</label>
+                    <input type="date" id="not-date">
+                    
+                    <label>Details / Link</label>
+                    <textarea id="not-desc" rows="3" placeholder="Enter details..."></textarea>
+                    
+                    <div style="background: #fff3cd; color: #856404; padding: 10px; font-size: 11px; margin-top: 10px; border-radius: 4px;">
+                        <i class="fas fa-eye"></i> This will be visible to everyone on the main website.
+                    </div>
+
+                    <button class="btn btn-orange" style="width: 100%; margin-top: 15px;" onclick="saAddNotice()">Publish Notice</button>
+                </div>
+
+                <div class="sa-card">
+                    <h3>Active Public Notices</h3>
+                    <table class="sa-table">
+                        <thead><tr><th>Date</th><th>Title</th><th>Action</th></tr></thead>
+                        <tbody id="sa-notice-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="sa-view-materials" style="display: none;">
+            <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+                
+                <div class="sa-card" style="height: fit-content;">
+                    <h3 style="color: var(--primary); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 15px;">+ Upload Material</h3>
+                    
+                    <label>Title / Topic Name</label>
+                    <input type="text" id="mat-title" placeholder="e.g. C++ Notes Chapter 1">
+                    
+                    <label>Subject / Course</label>
+                    <select id="mat-course">
+                        <option value="All">General (All Courses)</option>
+                        </select>
+                    
+                    <label>File URL (or Mock Upload)</label>
+                    <input type="text" id="mat-url" placeholder="Paste Drive Link or File Name">
+                    
+                    <div style="background: #d4edda; color: #155724; padding: 10px; font-size: 11px; margin-top: 10px; border-radius: 4px;">
+                        <i class="fas fa-lock"></i> Visible ONLY to logged-in students.
+                    </div>
+
+                    <button class="btn btn-blue" style="width: 100%; margin-top: 15px;" onclick="saAddMaterial()">Upload Material</button>
+                </div>
+
+                <div class="sa-card">
+                    <h3>Student Study Library</h3>
+                    <table class="sa-table">
+                        <thead><tr><th>Subject</th><th>Title</th><th>Link</th><th>Action</th></tr></thead>
+                        <tbody id="sa-material-list"></tbody>
+                    </table>
+                </div>
+            </div>
+                      </div>
+                  
+
+                  <div id="sa-view-website" style="display: none;">
+                            <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                
+                                <div class="sa-card">
+                                    <h3 style="color: var(--primary); margin-bottom: 15px;">Home Page Banner</h3>
+                                    <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
+                                        Update the main image shown on the landing page. Recommended size: 1600x400px.
+                                    </p>
+                                    
+                                    <label>Image URL</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <input type="text" id="site-banner-url" placeholder="https://example.com/image.jpg">
+                                        <button class="btn btn-blue" onclick="saUpdateBanner()">Update</button>
+                                    </div>
+
+                                    <div style="margin-top: 20px; border: 2px dashed #ddd; height: 150px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; border-radius: 8px; overflow: hidden;">
+                                        <img id="site-banner-preview" src="" alt="Banner Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                                        <span id="site-banner-placeholder" style="color: #ccc;">Preview Area</span>
+                                    </div>
+                                </div>
+
+                                <div class="sa-card">
+                                    <h3>Contact Information</h3>
+                                    <label>Helpline Number</label>
+                                    <input type="text" value="+91-9990788083" disabled style="background: #eee;">
+                                    <label>Official Email</label>
+                                    <input type="text" value="lifewaycomputer@gmail.com" disabled style="background: #eee;">
+                                    <p style="font-size: 11px; color: orange; margin-top: 10px;">
+                                        <i class="fas fa-lock"></i> To change hardcoded contact details, please contact the developer.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                      <div id="sa-view-team" style="display: none;">
+                <div class="sa-grid-2">
+        
+                <div class="sa-card">
+            <h3 style="margin-bottom: 15px; color: var(--primary);">+ Create Staff Access</h3>
+            
+            <label>Staff Name</label>
+            <input type="text" id="tm-name" placeholder="Full Name">
+            
+            <label>Username (Login ID)</label>
+            <input type="text" id="tm-user" placeholder="e.g. staff01">
+            
+            <label>Password</label>
+            <input type="text" id="tm-pass" placeholder="e.g. pass123">
+
+            <label style="margin-top: 15px; display:block; color: var(--accent); font-weight:bold;">Access Permissions:</label>
+            
+            <div style="background: #f0f9ff; padding: 15px; border: 1px dashed #0878f7; border-radius: 6px; margin-top:5px;">
+                <div style="margin-bottom: 8px; display:flex; align-items:center;">
+                    <input type="checkbox" id="perm-att" value="Attendance"> <span style="font-size: 13px; margin-left:8px;">Manage Attendance</span>
+                </div>
+                <div style="margin-bottom: 8px; display:flex; align-items:center;">
+                    <input type="checkbox" id="perm-batch" value="Batches"> <span style="font-size: 13px; margin-left:8px;">Create Batches</span>
+                </div>
+                <div style="display:flex; align-items:center;">
+                    <input type="checkbox" id="perm-std" value="Students"> <span style="font-size: 13px; margin-left:8px;">View Students</span>
+                </div>
+            </div>
+
+            <button class="btn btn-green" onclick="saAddTeamMember()">Create Account</button>
+        </div>
+
+        <div class="sa-card">
+            <h3>Active Team Members</h3>
+            <div class="cen-table-container">
+                <table class="sa-table">
+                    <thead>
+                        <tr>
+                            <th>Staff Details</th>
+                            <th>Credentials</th>
+                            <th>Allowed Tasks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sa-team-table">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+                <div id="sa-view-enquiries" style="display: none;">
+            <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+        
+            <div class="sa-card" style="height: fit-content; border-left: 4px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-bottom: 15px;">+ Add Offline Enquiry</h3>
+            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Log walk-ins or phone calls here.</p>
+            
+            <label>Name</label>
+            <input type="text" id="enq-name" placeholder="Visitor Name">
+            
+            <label>Mobile Number</label>
+            <input type="text" id="enq-phone" placeholder="10-digit Mobile">
+            
+            <label>Interested Course</label>
+            <input type="text" id="enq-course" placeholder="e.g. ADCA">
+            
+            <label>Source</label>
+            <select id="enq-source">
+                <option value="Walk-in">Walk-in (Office Visit)</option>
+                <option value="Phone Call">Phone Call</option>
+                <option value="Reference">Student Reference</option>
+            </select>
+            
+            <label>Notes / Remarks</label>
+            <textarea id="enq-msg" rows="2" placeholder="Discussion details..."></textarea>
+
+            <button class="btn btn-blue" style="width: 100%; margin-top: 15px;" onclick="saAddOfflineEnquiry()">Save Enquiry</button>
+            </div>
+
+                <div class="sa-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3>All Enquiries</h3>
+                <span class="dp-badge dp-paid" id="enq-total-count">0 Total</span>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table class="sa-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Person Details</th>
+                            <th>Interest/Msg</th>
+                            <th>Source</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sa-enq-list"></tbody>
+                </table>
+            </div>
+        </div>
+        <button onclick="document.getElementById('super-admin-modal').style.display='flex'; renderSuperAdminPanel()" 
+            style="position:fixed; bottom:20px; right:20px; background:#333; color:white; border:none; padding:10px 20px; border-radius:30px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:9999;">
+            <i class="fas fa-user-shield"></i> Super Admin View
+        </button>
+
+        <div id="super-admin-modal" class="cen-modal" style="display:none; background:rgba(0,0,0,0.8);">
+        <div class="cen-modal-content" style="width:700px; border-top:5px solid #333;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <h3 style="margin:0;"><i class="fas fa-user-shield"></i> Head Office Approval</h3>
+            <button onclick="document.getElementById('super-admin-modal').style.display='none'" style="border:none; background:none; font-size:20px;">&times;</button>
+        </div>
+
+        <p style="font-size:13px; color:#666; margin-bottom:15px;">
+            Authorize certificate printing requests from centers.
+        </p>
+
+        <table class="cen-table">
+            <thead>
+                <tr style="background:#f3f4f6;">
+                    <th>Reg ID</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="sa-auth-body">
+                </tbody>
+        </table>
+            </div>
+        </div>
+        </div>
+
+        </div>
+          
+                <div id="sa-view-projects" style="display: none;">
+                <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+                
+                <div class="sa-card" style="height: fit-content; border-top: 4px solid #9333ea;">
+            <h3 style="color: #9333ea; margin-bottom: 15px;">+ Upload Student Work</h3>
+            
+            <label>Project Title</label>
+            <input type="text" id="proj-title" placeholder="e.g. E-Commerce Website">
+            
+            <label>Student Name</label>
+            <input type="text" id="proj-student" placeholder="e.g. Rahul Kumar">
+            
+            <label>Category</label>
+            <select id="proj-cat">
+                <option>Web Development</option>
+                <option>Graphic Design</option>
+                <option>App Development</option>
+                <option>Digital Marketing</option>
+            </select>
+            
+            <label>Live URL (Project Link)</label>
+            <input type="text" id="proj-url" placeholder="https://...">
+            
+            <label>Project Screenshot</label>
+            <div style="border: 2px dashed #ddd; padding: 20px; text-align: center; border-radius: 8px; cursor: pointer; position: relative; overflow: hidden;">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 24px; color: #999;"></i>
+                <p style="font-size: 12px; color: #666; margin: 5px 0;">Click to Upload Image</p>
+                <input type="file" id="proj-img-input" accept="image/*" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;" onchange="previewProjectImage(this)">
+                <img id="proj-img-preview" src="" style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+            </div>
+            
+            <input type="hidden" id="proj-img-data">
+
+            <button class="btn btn-blue" style="width: 100%; margin-top: 20px; background: #9333ea;" onclick="saAddProject()">
+                Upload Project
+            </button>
+        </div>
+
+        <div class="sa-card">
+            <h3>Student Projects Library</h3>
+            <table class="sa-table">
+                <thead>
+                    <tr>
+                        <th style="width: 60px;">Img</th>
+                        <th>Project Details</th>
+                        <th>Category</th>
+                        <th>Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="sa-proj-list"></tbody>
+            </table>
+        </div>
+            </div>
+        </div>
+        <div id="sa-view-suggestions" style="display: none;">
+    <div class="sa-header">
+        <div>
+            <h2 style="color: #333;">📢 User Suggestions</h2>
+            <p style="font-size: 13px; color: #666;">Feedback from students and visitors.</p>
+        </div>
+        <div>
+             <button class="btn btn-red" onclick="saClearSuggestions()">
+                <i class="fas fa-trash"></i> Delete All
+            </button>
+        </div>
+    </div>
+
+    <div class="sa-card" style="border-top: 4px solid #f59e0b;">
+        <table class="sa-table">
+            <thead>
+                <tr style="background: #fff8e1;">
+                    <th style="width: 15%;">Date</th>
+                    <th style="width: 20%;">Sender Details</th>
+                    <th style="width: 50%;">Message</th>
+                    <th style="width: 15%;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="sa-sug-list">
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 30px; color: #999;">
+                        No suggestions found.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="sa-view-gallery" style="display: none;">
+    <div class="sa-header">
+        <h2 style="color: #333;">🖼️ Gallery Manager</h2>
+    </div>
+
+    <div class="sa-grid-2" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+        
+        <div class="sa-card" style="height: fit-content; border-top: 4px solid #d946ef;">
+            <h3 style="color: #d946ef; margin-bottom: 15px;">+ Add New Photo</h3>
+            
+            <label style="font-weight: bold; font-size: 12px;">Image Title</label>
+            <input type="text" id="gal-title" placeholder="e.g. Annual Function 2025" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+            
+            <label style="font-weight: bold; font-size: 12px;">Category</label>
+            <select id="gal-cat" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                <option value="Events">Events</option>
+                <option value="Campus">Campus</option>
+                <option value="Awards">Awards</option>
+                <option value="Students">Students</option>
+            </select>
+            
+            <label style="font-weight: bold; font-size: 12px;">Image URL</label>
+            <input type="text" id="gal-url" placeholder="Paste Image Link Here..." style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;">
+            
+            <button class="btn btn-blue" style="width: 100%; background: #d946ef;" onclick="saAddGalleryImage()">
+                <i class="fas fa-cloud-upload-alt"></i> Publish Photo
+            </button>
+        </div>
+
+        <div class="sa-card">
+            <h3>Active Gallery Images</h3>
+            <div style="overflow-x: auto;">
+                <table class="sa-table">
+                    <thead>
+                        <tr>
+                            <th>Preview</th>
+                            <th>Details</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sa-gallery-list">
+                        <tr><td colspan="4" style="text-align:center; padding:20px;">Loading Gallery...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                        
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+      <div id="page-gallery" class="page-section" style="display:none;">
+    <div class="abt-banner" style="background: linear-gradient(to right, #9333ea, #3b82f6);">
+        <h1>Our Gallery</h1>
+        <p>Moments & Memories of Lifeway Computer Education</p>
+    </div>
+
+    <div class="container" style="margin-top:40px; margin-bottom:40px;">
+        
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+            <button class="btn" style="background: #333; color: white;" onclick="renderPublicGallery('All')">All</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Events')">Events</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Campus')">Campus</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderPublicGallery('Awards')">Awards</button>
+        </div>
+
+        <div id="public-gallery-grid" class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            </div>
+    </div>
+</div>
+    </div>
+<div id="page-contact" class="page-section">
+    
+    <div class="contact-container">
+        
+        <div class="contact-info-panel">
+            <div class="info-head">
+                <h2>Let's Talk</h2>
+                <p>Have questions about courses or franchise opportunities? We are here to help you build your future.</p>
+            </div>
+
+            <div class="info-details">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <p style="font-weight:bold;">Head Office</p>
+                        <p style="font-size:13px; opacity:0.8;">Mahavir Enclave Part-III, New Delhi - 110059</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div>
+                        <p style="font-weight:bold;">Call Us</p>
+                        <p style="font-size:13px; opacity:0.8;">+91-9990788083</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <p style="font-weight:bold;">Email</p>
+                        <p style="font-size:13px; opacity:0.8;">lifewaycomputer@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mini-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.576020593467!2d77.067!3d28.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM1JzI0LjAiTiA3N8KwMDQnMTUuNiJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="contact-form-panel">
+            <div class="form-header">
+                <h3>Send a Message</h3>
+            </div>
+
+            <form onsubmit="handleContactSubmit(event)">
+                
+                <div class="input-box">
+                    <input type="text" id="contact-name" class="input-field" required>
+                    <label class="input-label">Full Name</label>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="input-box">
+                        <input type="email" id="contact-email" class="input-field" required>
+                        <label class="input-label">Email Address</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" id="contact-phone" class="input-field" required>
+                        <label class="input-label">Phone Number</label>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <select id="contact-subject" class="input-field" style="color:#555;" required>
+                        <option value="" disabled selected></option> <option value="Admission">Admission Enquiry</option>
+                        <option value="Franchise">Franchise Enquiry</option>
+                        <option value="Support">Student Support</option>
+                    </select>
+                    <label class="input-label">Select Subject</label>
+                </div>
+
+                <div class="input-box">
+                    <textarea id="contact-msg" class="input-field" rows="1" required style="resize:none; height:auto; min-height:40px;"></textarea>
+                    <label class="input-label">Your Message</label>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+<div id="page-gallery" class="page-section">
+    <div class="abt-banner" style="background: linear-gradient(to right, #9333ea, #3b82f6);">
+        <h1>Student Showcase</h1>
+        <p>Explore real-world projects built by our talented students.</p>
+    </div>
+
+    <div class="container">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+            <button class="btn" style="background: #333; color: white;" onclick="renderGallery('All')">All</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderGallery('Web Development')">Web Dev</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderGallery('Graphic Design')">Graphics</button>
+            <button class="btn" style="background: white; border: 1px solid #ddd; color: #333;" onclick="renderGallery('App Development')">Apps</button>
+        </div>
+
+        <div id="gallery-container" class="gallery-grid">
+            </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="container footer-grid">
+        
+        <div class="footer-col">
+            <div class="footer-logo">
+                <i class="fas fa-laptop-code"></i> Lifeway Computer Education
+            </div>
+            <p class="footer-desc">
+                India's No.1 Computer Institute & Best Franchise Brand. Empowering youth with future-ready IT skills under ISO 9001:2015 certification.
+            </p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a onclick="navigate('home')"><i class="fas fa-angle-right"></i> Home</a></li>
+                <li><a onclick="navigate('login')"><i class="fas fa-angle-right"></i> Student Login</a></li>
+                <li><a onclick="navigate('center-login')"><i class="fas fa-angle-right"></i> Franchise Login</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Verify Certificate</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Online Exam</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Top Courses</h4>
+            <ul class="footer-links">
+                <li><a href="#"><i class="fas fa-angle-right"></i> ADCA (Advance Diploma)</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Web Development</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Graphic Designing</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> Digital Marketing</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i> CCC / O-Level</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <ul class="contact-list">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Head Office: B-37 Gali no -22,Mahavir Enclave part 2,Uttam Nagar,New Delhi,India - 110059</span>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <span>+91-9990788083</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>lifewaycomputer@gmail.com</span>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container footer-bottom-flex">
+            <p>&copy; <span id="year"></span> <strong>Lifeway Computer Education</strong>. All Rights Reserved.</p>
+            <p>Privacy Policy | Terms & Conditions</p>
+        </div>
+    </div>
+</footer>
+ 
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+ </body>
+</html>
