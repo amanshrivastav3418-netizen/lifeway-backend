@@ -1,0 +1,67 @@
+# ============================================================================
+# Render.com Deployment Configuration
+# ============================================================================
+# This file defines the infrastructure and environment for deploying the
+# Lifeway Computers Backend to Render.com
+# 
+# Deploy using this file: https://render.com/docs/infrastructure-as-code
+# ============================================================================
+
+services:
+  - type: web
+    name: lifeway-backend
+    env: node
+    plan: free
+    
+    # Build settings
+    buildCommand: npm install
+    startCommand: npm start
+    
+    # Environment variables (configure in Render Dashboard after deployment)
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_HOST
+        sync: false  # Set manually in Render Dashboard
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USER
+        sync: false  # Set manually in Render Dashboard
+      - key: DB_PASSWORD
+        sync: false  # Set manually in Render Dashboard
+      - key: DB_NAME
+        sync: false  # Set manually in Render Dashboard
+      - key: JWT_SECRET
+        sync: false  # Set manually in Render Dashboard
+      - key: SESSION_SECRET
+        sync: false  # Set manually in Render Dashboard
+      - key: FRONTEND_URLS
+        sync: false  # Set manually in Render Dashboard
+      - key: DB_WAIT_FOR_CONNECTIONS
+        value: "true"
+      - key: DB_CONNECTION_LIMIT
+        value: "10"
+      - key: DB_QUEUE_LIMIT
+        value: "0"
+      - key: DB_ENABLE_KEEP_ALIVE
+        value: "true"
+      - key: DB_KEEP_ALIVE_INITIAL_DELAY_MS
+        value: "0"
+    
+    # Health check
+    healthCheckPath: /api/health
+    
+    # Disk usage (for uploads)
+    disk:
+      name: uploads
+      mountPath: /opt/render/project/backend/uploads
+      sizeGB: 1
+    
+    # Repo settings
+    repo: https://github.com/YOUR_USERNAME/lifeway-backend.git
+    branch: main
+    
+    # Auto-deploy on push
+    autoDeploy: true

@@ -1,0 +1,59 @@
+# Environment variables - NEVER commit real secrets!
+.env
+.env.local
+.env.*.local
+
+# Node.js
+node_modules/
+package-lock.json
+npm-debug.log
+npm-debug.log.*
+yarn-error.log
+
+# Operating System
+.DS_Store
+.windows-build-tools
+Thumbs.db
+.git
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Temporary files
+tmp/
+temp/
+dist/
+build/
+
+# Optional npm cache
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Yarn
+.yarn-integrity
+.yarn/cache/
+.yarn/unplugged/
+
+# OpenTelemetry
+opentelemetry-logs/
+
+# Uploads folder (optional - modify as needed)
+# uploads/
