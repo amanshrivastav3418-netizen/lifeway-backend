@@ -14,26 +14,16 @@
 // ============================================================================
 // API CONFIGURATION
 // ============================================================================
-// IMPORTANT: Update this to your Render.com backend URL in production
-// Format: https://your-app-name.onrender.com/api
+// IMPORTANT: Updated for Hostinger deployment
+// All requests go to same server (no CORS needed)
 // 
 // Development: http://localhost:3000/api
-// Production (Render): https://your-app-name.onrender.com/api
+// Production (Hostinger): https://lifewaycomputer.org/api
 // 
-// To find your Render URL:
-// 1. Go to Render Dashboard
-// 2. Select your service
-// 3. Copy the URL from "Environments" section (e.g., https://lifeway-backend.onrender.com)
-// 4. Add /api at the end for API calls
 
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000/api' 
-  : 'https://your-render-app-name.onrender.com/api'; // Change this to YOUR Render URL
-
-// Alternative: Auto-detect Render backend
-// const API_BASE_URL = (window.location.protocol === 'https:' && window.location.hostname !== 'localhost')
-//   ? 'https://your-render-app-name.onrender.com/api'
-//   : 'http://localhost:3000/api';
+  : 'https://lifewaycomputer.org/api'; // Hostinger production URL
 
 const TOKEN_KEY = 'lifeway_auth_token';
 const USER_KEY = 'lifeway_user_data';
